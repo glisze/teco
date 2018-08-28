@@ -227,19 +227,20 @@ typedef int	ptrdiff_t;	/* not in /sys/types.h yet */
 #endif
 #include <sys/types.h>		/* size_t (and maybe ptrdiff_t) */
 #else /* sun */
-typedef int	ptrdiff_t;
+// xxx typedef int	ptrdiff_t;
 typedef ULONG	size_t;
 #endif /* sun */
 
 #ifdef AMIGA
 #define NULL 0L
 #else
-#define NULL 0
+// xxx #define NULL 0
 #endif
 
 #else
-#include <stddef.h>		/* define ptrdiff_t, size_t and NULL */
+// xxx #include <stddef.h>		/* define ptrdiff_t, size_t and NULL */
 #endif
+#include <stddef.h>		/* define ptrdiff_t, size_t and NULL */
 
 /*****************************************************************************
 	Define SIZE_T,  which on most machines will be the same as size_t.

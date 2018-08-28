@@ -1,0 +1,8 @@
+005_ () 
+{ 
+    ( D="git: set or get the description if this is a repository";
+    a=.git/description;
+    test -w "${a}" && echo -n "$( basename "$( pwd )")> " && cat "${a}" && test "$*" != "" && { 
+        echo "$*" > "${a}"
+    } && cat "${a}" )
+}

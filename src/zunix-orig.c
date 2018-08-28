@@ -24,14 +24,12 @@
 #ifdef SUNOS4_0
 #include <sys/time.h>
 #else
-// xxxx #include <sys/time.h>		/* define tm struct */
-#include <time.h>
+#include <sys/time.h>		/* define tm struct */
 #endif
-#include <dirent.h> // xxx
 #ifdef BSD43
 #include <sys/dir.h>
 #else
-// xxxx #include <dirent.h>
+#include <dirent.h>
 #endif
 #include <sys/file.h>
 #include <sys/param.h>
@@ -39,7 +37,6 @@
 #include <sys/wait.h>
 #include <pwd.h>
 
-#define CURSES 1
 #if CURSES
 #include <curses.h>		/* has to come before zport.h */
 #endif
@@ -117,7 +114,7 @@ int	fchmod();		/* change mode of a file */
 int	fclose();		/* close a stream */
 int	fstat();		/* get information about an open file */
 #ifndef ULTRIX			/* defined somewhere already */
-// xxx int	fwrite();		/* write to a stream */
+int	fwrite();		/* write to a stream */
 #endif
 int	fputc();		/* put character on stream */
 char 	*getenv();		/* return value of an environment name */
@@ -130,7 +127,7 @@ int	read();			/* read from file */
 int	rename();		/* rename a file */
 int	siginterrupt();		/* allow signals to interrupt system calls */
 int	stat();			/* get information about a file */
-// xxx int	time();			/* get current time */
+int	time();			/* get current time */
 int	unlink();		/* remove link to file (delete the file) */
 int	write();		/* write to a file */
 
@@ -160,7 +157,7 @@ static int vernum();		/* see bottom of this file */
 static int movefile();		/* see bottom of this file */
 
 extern	int sys_nerr;		/* number of system error messages */
-// xxx extern	char *sys_errlist[];	/* error message text */
+extern	char *sys_errlist[];	/* error message text */
 
 static	int SupGotCtC = 0;
 static	char **wild_list = (char **)0;	/* wild-card file name list */
@@ -2418,8 +2415,7 @@ char *pattern;
 			return;
 		goto p_err2;
 	}
-	// xxx	if (fstat(dirp->dd_fd, &stb) < 0)
-	if (fstat(dirfd(dirp), &stb) < 0)
+	if (fstat(dirp->dd_fd, &stb) < 0)
 		goto p_err1;
 	if (!isdir(stb)) {
 		errno = ENOTDIR;
