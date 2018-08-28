@@ -1,0 +1,10 @@
+language: c
+sudo: false
+install: true
+script:
+- ./t/0001-who-is-this
+- pushd src && . Fn/002_ && 002_
+- 00-make-linux genclp
+- 00-make-linux clean
+- 00-make-linux
+- popd
