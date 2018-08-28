@@ -1,0 +1,76 @@
+zunix.o: In function `ZOpOut':
+/home/source-7/gunter/glisze/teco/src/zunix.c:1360: warning: the use of `tempnam' is dangerous, better use `mkstemp'
+zunix.o: In function `ZErMsg':
+/home/source-7/gunter/glisze/teco/src/zunix.c:207: warning: `sys_errlist' is deprecated; use `strerror' or `strerror_r' instead
+/home/source-7/gunter/glisze/teco/src/zunix.c:206: warning: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
+zunix.o: In function `drawline':
+/home/source-7/gunter/glisze/teco/src/zunix.c:2882: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2882: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2883: undefined reference to `HtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2883: undefined reference to `HtSize'
+zunix.o: In function `zaddch':
+/home/source-7/gunter/glisze/teco/src/zunix.c:581: undefined reference to `HtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:570: undefined reference to `HtSize'
+zunix.o: In function `finish':
+/home/source-7/gunter/glisze/teco/src/zunix.c:2915: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2915: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2918: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2918: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2918: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2918: undefined reference to `ScroLn'
+zunix.o: In function `specon':
+/home/source-7/gunter/glisze/teco/src/zunix.c:603: undefined reference to `SpcMrk'
+zunix.o: In function `specoff':
+/home/source-7/gunter/glisze/teco/src/zunix.c:610: undefined reference to `SpcMrk'
+zunix.o: In function `zaddch2':
+/home/source-7/gunter/glisze/teco/src/zunix.c:638: undefined reference to `SeeAll'
+/home/source-7/gunter/glisze/teco/src/zunix.c:675: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:675: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:675: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:675: undefined reference to `ScroLn'
+zunix.o: In function `ZDspBf':
+/home/source-7/gunter/glisze/teco/src/zunix.c:804: undefined reference to `HtSize'
+zunix.o: In function `ZTrmnl':
+/home/source-7/gunter/glisze/teco/src/zunix.c:1903: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:1903: undefined reference to `HtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:1903: undefined reference to `VtSize'
+zunix.o: In function `redraw':
+/home/source-7/gunter/glisze/teco/src/zunix.c:2935: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2961: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2961: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2961: undefined reference to `HtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2962: undefined reference to `HldFlg'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3087: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3087: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2952: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2952: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2952: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:2952: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3001: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3001: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3023: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3023: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3027: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3027: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3060: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3060: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3074: undefined reference to `SeeAll'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3074: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3074: undefined reference to `ScroLn'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3095: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3095: undefined reference to `ScroLn'
+zunix.o: In function `centre':
+/home/source-7/gunter/glisze/teco/src/zunix.c:3113: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3113: undefined reference to `ScroLn'
+zunix.o: In function `do_seetog':
+/home/source-7/gunter/glisze/teco/src/zunix.c:3223: undefined reference to `SeeAll'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3223: undefined reference to `SeeAll'
+zunix.o: In function `keypad_on':
+/home/source-7/gunter/glisze/teco/src/zunix.c:3231: undefined reference to `KeyPad'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3232: undefined reference to `KeyPad'
+zunix.o: In function `Scope':
+/home/source-7/gunter/glisze/teco/src/zunix.c:3252: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3255: undefined reference to `VtSize'
+/home/source-7/gunter/glisze/teco/src/zunix.c:3256: undefined reference to `VtSize'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile-linux:84: tecoc] Error 1

@@ -2,5 +2,5 @@
 { 
     ( D="make -f Makefile-linux" );
     ./genclp;
-    make -f Makefile-linux
+    make -f Makefile-linux "$@"
 }
