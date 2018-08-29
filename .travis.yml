@@ -1,6 +1,11 @@
 language: c
 sudo: false
 install: true
+addons:
+  apt:
+    packages:
+    - libncurses5-dev
+    - libncursesw5-dev
 script:
 - ./t/0001-who-is-this
 - pushd src && . Fn/002_ && 002_
