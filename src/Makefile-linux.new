@@ -54,7 +54,8 @@
 # doesn't understand.
 
 CC= gcc
-CFLAGS= ${OSVERS} ${DEBG} ${CCHEK} -DCURSES -static -O -Wall -Wshadow -Wpointer-arith -Wcast-qual
+CFLAGS= ${OSVERS} ${DEBG} ${CCHEK} -DCURSES -O -Wall -Wshadow -Wpointer-arith -Wcast-qual
+# CFLAGS= ${OSVERS} ${DEBG} ${CCHEK} -DCURSES -static -O -Wall -Wshadow -Wpointer-arith -Wcast-qual
 #TERMOBJS = -ltermcap
 TERMOBJS = `pkg-config --libs ncurses`
 COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c -g
@@ -153,4 +154,3 @@ makedep: FRC
 FRC:
 
 
-# DO NOT DELETE THIS LINE -- make depend uses it
