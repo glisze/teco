@@ -75,3 +75,4 @@ stamp-h1
 depcomp
 .deps
 tecoc
+autom4te.cache/
