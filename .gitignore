@@ -72,3 +72,5 @@ config.log
 config.status
 config.h
 stamp-h1
+depcomp
+.deps
