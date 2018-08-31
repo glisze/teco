@@ -1,6 +1,8 @@
 bin_PROGRAMS = tecoc
-tecoc_CFLAGS = -DCURSES -static
-tecoc_LDFLAGS = `pkg-config --libs ncurses`
+tecoc_CPPFLAGS = -DCURSES
+# tecoc_LDADD = `pkg-config --libs ncurses`
+tecoc_LDADD = -lncurses
+tecoc_LDFLAGS = -static
 tecoc_SOURCES = tecoc.c
 tecoc_SOURCES += \
 	baksrc.c bldstr.c clenup.c cmatch.c docjr.c doeves.c doflag.c \
@@ -21,3 +23,6 @@ tecoc_SOURCES += \
 	tabort.c typbuf.c typest.c uminus.c wrpage.c zfrsrc.c zunix.c
 
 OBJECTS= $(CFILES:.c=.o)
+
+tecoc-static: $(OBJECTS)
+	$(CC) -static -o $@ $(OBJECTS) -lncursesw
