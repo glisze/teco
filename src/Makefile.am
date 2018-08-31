@@ -2,6 +2,7 @@ bin_PROGRAMS = tecoc
 tecoc_CPPFLAGS = -DCURSES
 # tecoc_LDADD = `pkg-config --libs ncurses`
 tecoc_LDADD = -lncurses
+tecoc_LDADD += -ltinfo
 tecoc_LDFLAGS = -static
 tecoc_SOURCES = tecoc.c
 tecoc_SOURCES += \
