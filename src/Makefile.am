@@ -1,7 +1,6 @@
 bin_PROGRAMS = tecoc
-tecoc_CPPFLAGS = -DCURSES
-# tecoc_LDADD = `pkg-config --libs ncurses`
-tecoc_LDADD = -lncurses
+tecoc_CPPFLAGS = @CURSES_CFLAGS@
+tecoc_LDADD = @CURSES_LIBS@
 tecoc_LDADD += -ltinfo
 tecoc_LDFLAGS = -static
 tecoc_SOURCES = tecoc.c
@@ -26,4 +25,4 @@ tecoc_SOURCES += \
 OBJECTS= $(CFILES:.c=.o)
 
 tecoc-static: $(OBJECTS)
-	$(CC) -static -o $@ $(OBJECTS) -lncursesw
+	$(CC) -static -o $@ $(OBJECTS) @CURSES_LIBS@

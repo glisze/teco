@@ -5,6 +5,7 @@ AC_INIT([tecoc],
         [https://glisze.github.com/teco/])
 AM_INIT_AUTOMAKE([gnits])
 AC_PROG_CC
+AX_WITH_CURSES
 AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_FILES([
   Makefile
