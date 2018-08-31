@@ -4,7 +4,7 @@ AC_INIT([tecoc],
         [not-ready-to-be-bug-free@a.b.c], [tecoc],
         [https://glisze.github.com/teco/])
 AM_INIT_AUTOMAKE([gnits])
-AC_PROC_CC
+AC_PROG_CC
 AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_FILES([
   Makefile
