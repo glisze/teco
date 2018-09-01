@@ -8,4 +8,4 @@ addons:
     - libncursesw5-dev
 script:
 - ./t/0001-who-is-this
-- ./bootstrap && ./configure && make
+- ./bootstrap && ./configure --enable-silent-rules && make
