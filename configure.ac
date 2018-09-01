@@ -5,8 +5,7 @@ AC_INIT([tecoc],
         [https://glisze.github.com/teco/])
 AM_INIT_AUTOMAKE([foreign])
 AC_PROG_CC
-PKG_CHECK_MODULES([CURSES],[ncurses])
-dnl AX_WITH_CURSES
+AX_WITH_CURSES
 AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_FILES([
   Makefile
