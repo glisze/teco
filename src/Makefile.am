@@ -1,7 +1,8 @@
 bin_PROGRAMS = tecoc
-tecoc_CPPFLAGS = @CURSES_CFLAGS@
+tecoc_CPPFLAGS = -DCURSES
+tecoc_CPPFLAGS += @CURSES_CFLAGS@
 tecoc_LDADD = @CURSES_LIBS@
-tecoc_LDADD += -ltinfo
+# tecoc_LDADD += -ltinfo
 tecoc_LDFLAGS = -static
 tecoc_SOURCES = tecoc.c
 tecoc_SOURCES += \
