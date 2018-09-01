@@ -9,4 +9,4 @@ addons:
 script:
 - ./t/0001-who-is-this
 - ./bootstrap && ./configure --enable-silent-rules && make
-- make distcheck
+- make V=0 distcheck
