@@ -6,7 +6,7 @@ AC_INIT([tecoc],
 AM_INIT_AUTOMAKE([foreign])
 AC_PROG_CC
 PKG_CHECK_MODULES([TINFO],[tinfo],
-   [],[])
+   [],[AC_MSG_NOTICE([package tinfo is not here; assuming it is not needed.])])
 AX_WITH_CURSES
 AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_FILES([
