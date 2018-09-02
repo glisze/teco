@@ -1,3 +1,0 @@
-/^# DO NOT DELETE THIS LINE/+1,$d
-$r makedep5
-w
