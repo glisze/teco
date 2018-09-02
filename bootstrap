@@ -1,1 +1,3 @@
+scripts/gitlog-to-changelog > ChangeLog
+scripts/news-just-in
 autoreconf -vif
