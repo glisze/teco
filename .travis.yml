@@ -13,7 +13,7 @@ script:
 before_deploy:
 - git config --local user.name "Gunter Liszewski (ci)"
 - git config --local user.email "gunter.liszewski@gmail.com"
-- git tag "staging/v$( scripts/git-version-gen VERSION --prefix release/v )"
+- git tag "staging/v$( scripts/git-version-gen VERSION --prefix release\\/v )"
 deploy:
   provider: releases
   api_key:
