@@ -9,4 +9,18 @@ addons:
 script:
 - ./t/0001-who-is-this
 - ./bootstrap && ./configure --enable-silent-rules && make
-- make -s distcheck && make -s distclean
+- make -s distcheck
+before_deploy:
+- git config --local user.name "Gunter Liszewski (ci)"
+- git config --local user.email "gunter.liszewski@gmail.com"
+- git tag "staging/v$( cat .version )"
+deploy:
+  provider: releases
+  api_key:
+        secure: Zs4E5TSBCsq+F71A02zlIUxvhrtz/tOyIUSYYAoN0HYXxwDYL6wRKUrDvkEwtwjmS9IfCy+R4k9cClipiLbQLtJpIayh5qz0T0XYrIGi7+rm4i9sSOrrSk6AuCQ/yYpPqXD/dSe0kTmw8vgfqgbBoXYZG/xEiNEp430FvjRjx+bprLIbn+G5mtFDYiWCP7z5DQ5buFUte8kMzopmYvZZYstRrys7vlNkN/J9BrqD2z1YBYqv2SKMfTTHIEVulmVCfymOfUfsBdBsD2tYJejnZvaJELsMt20+7pO3lhtM4i/hDER/nSWePzs9/qRYwU8Ymdoe+eTSBvnrLshiQmvXFIjAHflYXsKjy6tcYp/SYYEtK4nXY1NpUbw6B8tam/hNMCNCQuhu8sqL5T7xKI2rTna7eN5uxrdgSv7N06zK+1je23pXYPu2oJoEZADrnGF4+wt94fOYOj6YK212RpZ9PlT4uzaKVIZ/z4LydT2cATeAPaBeACWtMnKGrLiLF5hcaRrj/H2j0yIht7OCG4ivRLl4JcgUO9jiS883jXPwDKRfL/94ffjeeAFsxqZbj560VbVXt71DjHr1itySH1OBQaJISDJ91F64QGRVARIZn+5fgNmBeiW3VNqVLorLblkHd3dRRpjxh0Aj6zGZjVxoVPlqUZa1XJZYTVLqSalfO6E=
+  file_glob: true
+  file:
+    - "tecoc-*.tar.gz"
+    - "packages/here/*.scm"
+  on:
+    tags: true
