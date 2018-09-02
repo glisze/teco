@@ -22,5 +22,6 @@ deploy:
   file:
     - "tecoc-*.tar.gz"
     - "packages/here/*.scm"
+  skip_cleanup: true
   on:
     tags: true
