@@ -1,0 +1,5 @@
+bzless-guix-build-log-file () 
+{ 
+    ( D="Show the log file for this build" );
+    bzless $( guix build -f guix.scm --log-file )
+}

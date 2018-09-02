@@ -1,0 +1,5 @@
+clone-hithere-release-v0.0 () 
+{ 
+    ( D="Clone this particular 'release-v0.0' to be hashed up" );
+    git clone --depth 1 --branch release/v0.0 https://github.com/glisze/hithere.git hithere-release-v0.0
+}

@@ -1,0 +1,1 @@
+sed guix.scm.in -e '/@sha256@/s,,'"$( guix hash hithere-*.tar.gz )"',' -e '/@version@/s,,'"$( cat .version )"',' >guix.scm
