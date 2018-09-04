@@ -12,7 +12,7 @@ script:
 - make -s distcheck
 - make -s dist-xz
 - . Fn/002_;002_;packages-here
-- mkdir -p out && mv tococ-*.tar.xz ./out && mv packages-here.tar.gz ./out
+- mkdir -p out && mv tecoc-*.tar.xz ./out && mv packages-here.tar.gz ./out
 before_deploy:
 - git config --local user.name "Gunter Liszewski (ci)"
 - git config --local user.email "gunter.liszewski@gmail.com"

@@ -19,15 +19,15 @@
 (define-public teco
   (package 
    (name "teco")
-   (version "0.0.54-2f6a")
+   (version "0.0.56-16e3")
    (source (origin
 	    (method git-fetch)
 	    (uri (git-reference
 		  (url "https://github.com/glisze/teco.git")
-		  (commit "deploy/v0.0.54-2f6a")))
+		  (commit "deploy/v0.0.56-16e3")))
 	    (sha256
 	     (base32
-	    "1fbrwip1j7k8d1m2vrsz3wgfvpmqlkxyn3093vy6pb6d2xr20g8i"))))
+	    "04wjn87q8da8a6h5mbpk8syashszgdv1q0pddihf53z803nl6k2d"))))
    (build-system gnu-build-system)
    (arguments
     '(#:phases
@@ -37,7 +37,7 @@
 				(for-each (lambda (file)
 					    (patch-shebang file))
 					  (find-files "./scripts/"))
-				(invoke "sh" "-c" "echo 0.0.54-2f6a > ./VERSION")
+				(invoke "sh" "-c" "echo 0.0.56-16e3 > ./VERSION")
 				(invoke "sh" "-c" "touch ./ChangeLog")
 				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
 				(invoke "sh" "-c" "autoreconf -vif"))))))
@@ -52,7 +52,7 @@
       ("pkg-config" ,pkg-config)))
    (synopsis "teco:  the Text Editor and COrrector program")
    (description
-    "From the ibiblio archive of the TECOC-146 program. This, here, now has only the minimal changes to make it compile. Also, a package definition for Guix is within packages/here/. This, in fact, is the current object of this here.")
+    "From the ibiblio archive of the TECOC-146 program.\n This, here, now has only the minimal changes to make it compile.\n Also, a package definition for Guix is within packages/here/. This, in fact, is the current object of this here.")
    (home-page "https://glisze.github.com/teco")
    (license gpl3+)))
 
