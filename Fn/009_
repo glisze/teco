@@ -1,0 +1,10 @@
+009_ () 
+{ 
+    local D="Record the shell functions as they are declared now.";
+    rm -f Fn/*~ Fn/*.bak;
+    for x in Fn/*;
+    do
+        local y=$(basename $x);
+        declare -f $y > Fn/$y;
+    done
+}

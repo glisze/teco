@@ -1,0 +1,8 @@
+git-fetch () 
+{ 
+    ( D="git-fetch PACKAGE PREFIX VERSION";
+    PACKAGE="$1";
+    PREFIX="$2";
+    VERSION="$3";
+    git clone --depth 1 --branch $PREFIX$VERSION file://$( pwd ) ${PACKAGE}-$VERSION )
+}

@@ -11,6 +11,7 @@ script:
 - ./bootstrap && ./configure --enable-silent-rules && make
 - make -s distcheck
 - make -s dist-xz
+- . Fn/002_;002_;packages-here
 before_deploy:
 - git config --local user.name "Gunter Liszewski (ci)"
 - git config --local user.email "gunter.liszewski@gmail.com"
@@ -21,6 +22,7 @@ deploy:
     secure: HnvNBgZs6F/+5KDQwczSSed8XvwBPYxIB6hp616K4J1hJRnLrV4vxd5EyV8S4UFnPOp6Qvb7/kTV2QzDvbikwHKyCVS3sIaxYgvMoKuiTlP04xQIKnnBDWM1w0MlGeiTjsahNttJ2pZkUQqJbttIFuI/80A1TiUjgSW1AUubrBFb8N5xYg2iMNpCBE/PYwjSTt5I+ugDJCKVZf0+jVi3K2sPQ4dBaAudCAuJpGYtFDymQIuhYMA537MHMZLsBta6AUIb8tYZ2x/x8m2gO+4ytysw5YkItZaVIgXxqYTgXjrN/Otvlndg6DQedyAmLlPAhklr5bsya97GdKSJfFFxw6NpEsjWjB/yILqu6D5GZzSj/2nE/dV4fObyPSJBnJq/k0UCoGOql90svfDwK3wGxElbq6x1dGL4fqNCXq9j/tuVrUFzzOABGLbdm3LZH8lbb4DURg+5uoGto8AsM0SToyGFHJOCzEgHeLQ2bxcNTHFj31hqpCecDtIJhe8SOVFv37GmQ43ZHkW+fuBbJuaepeBCT8qEZRBj5cg9PPnicLWNtXzSxA1qe7OnheSpVkzPQICOcXL/r571c9GNoOgUB4agzrFgow+/zQiJCVwRgkJDl81nt8epdTm7waJvgu8lMcSYZ0pt+ssZpTFOBVUt4sV06fOgEFykmlWUXi34d94=
   file_glob: true
   file: tecoc-0.0.*.tar.xz
+  file: packages-here.tar.gz
   skip_cleanup: true
   on:
     repo: glisze/teco

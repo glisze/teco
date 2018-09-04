@@ -1,0 +1,58 @@
+(define-module (here @PACKAGE@)
+  #:use-module (gnu packages autotools)
+  #:use-module (gnu packages perl)
+  #:use-module (gnu packages version-control)
+  #:use-module (gnu packages texinfo)
+  #:use-module (gnu packages pkg-config)
+  #:use-module (gnu packages ncurses)
+  #:use-module (guix git-download)
+  #:use-module (guix build-system gnu)
+  #:use-module (guix licenses)
+  #:use-module (guix packages))
+
+;;
+;; Commentary
+;;
+
+;; guix build -L ./ @PACKAGE@ -K
+
+(define-public @PACKAGE@
+  (package 
+   (name "@PACKAGE@")
+   (version "@VERSION@")
+   (source (origin
+	    (method git-fetch)
+	    (uri (git-reference
+		  (url "@URL@")
+		  (commit "@COMMIT@")))
+	    (sha256
+	     (base32
+	    "@SHA256@"))))
+   (build-system gnu-build-system)
+   (arguments
+    '(#:phases
+      (modify-phases %standard-phases
+		     (replace 'bootstrap
+			      (lambda _
+				(for-each (lambda (file)
+					    (patch-shebang file))
+					  (find-files "./scripts/"))
+				(invoke "sh" "-c" "echo @VERSION@ > ./VERSION")
+				(invoke "sh" "-c" "touch ./ChangeLog")
+				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
+				(invoke "sh" "-c" "autoreconf -vif"))))))
+   (native-inputs
+    `(("autoconf" ,autoconf)
+      ("automake" ,automake)
+      ("perl" ,perl)
+      ("git" ,git)
+      ("texinfo" ,texinfo)
+      ("pkg-config",pkg-config)
+      ("ncurses",ncurses)))
+   (synopsis "@PACKAGE@: @SYNOPSIS@")
+   (description
+    "@DESCRIPTION@")
+   (home-page "@HOME@")
+   (license gpl3+)))
+
+
