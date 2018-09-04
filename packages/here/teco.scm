@@ -19,15 +19,15 @@
 (define-public teco
   (package 
    (name "teco")
-   (version "0.0.56-16e3")
+   (version "0.0.57-9db5")
    (source (origin
 	    (method git-fetch)
 	    (uri (git-reference
 		  (url "https://github.com/glisze/teco.git")
-		  (commit "deploy/v0.0.56-16e3")))
+		  (commit "deploy/v0.0.57-9db5")))
 	    (sha256
 	     (base32
-	    "04wjn87q8da8a6h5mbpk8syashszgdv1q0pddihf53z803nl6k2d"))))
+	    "12ds6v1g43rzq66dq8fk8l2dqb9zdb0ldcqcs68ax29q5308bgb5"))))
    (build-system gnu-build-system)
    (arguments
     '(#:phases
@@ -37,7 +37,7 @@
 				(for-each (lambda (file)
 					    (patch-shebang file))
 					  (find-files "./scripts/"))
-				(invoke "sh" "-c" "echo 0.0.56-16e3 > ./VERSION")
+				(invoke "sh" "-c" "echo 0.0.57-9db5 > ./VERSION")
 				(invoke "sh" "-c" "touch ./ChangeLog")
 				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
 				(invoke "sh" "-c" "autoreconf -vif"))))))
