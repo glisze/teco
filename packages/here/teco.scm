@@ -14,20 +14,20 @@
 ;; Commentary
 ;;
 
-;; guix build -L ./ teco -K
+;; guix build -L ./packages teco -K
 
 (define-public teco
   (package 
    (name "teco")
-   (version "0.0.53-8116")
+   (version "0.0.54-2f6a")
    (source (origin
 	    (method git-fetch)
 	    (uri (git-reference
 		  (url "https://github.com/glisze/teco.git")
-		  (commit "deploy/v0.0.53-8116")))
+		  (commit "deploy/v0.0.54-2f6a")))
 	    (sha256
 	     (base32
-	    "070js4vpcq9n39jb12dalj8sca3w206hasig705sp5dr16km5nv6"))))
+	    "1fbrwip1j7k8d1m2vrsz3wgfvpmqlkxyn3093vy6pb6d2xr20g8i"))))
    (build-system gnu-build-system)
    (arguments
     '(#:phases
@@ -37,7 +37,7 @@
 				(for-each (lambda (file)
 					    (patch-shebang file))
 					  (find-files "./scripts/"))
-				(invoke "sh" "-c" "echo 0.0.53-8116 > ./VERSION")
+				(invoke "sh" "-c" "echo 0.0.54-2f6a > ./VERSION")
 				(invoke "sh" "-c" "touch ./ChangeLog")
 				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
 				(invoke "sh" "-c" "autoreconf -vif"))))))
@@ -50,9 +50,9 @@
       ("git" ,git)
       ("texinfo" ,texinfo)
       ("pkg-config",pkg-config)))
-   (synopsis "teco: @SYNOPSIS@")
+   (synopsis "teco:  the Text Editor and COrrector program")
    (description
-    "@DESCRIPTION@")
+    "From the ibiblio archive of the TECOC-146 program. This, here, now has only the minimal changes to make it compile. Also, a package definition for Guix is within packages/here/. This, in fact, is the current object of this here.")
    (home-page "https://glisze.github.com/teco")
    (license gpl3+)))
 
