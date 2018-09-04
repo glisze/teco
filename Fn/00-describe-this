@@ -1,4 +1,4 @@
 00-describe-this () 
 { 
-    sed packages/here/teco.scm -e 's/@SYNOPSIS@/ the Text Editor and COrrector program/' -e 's/@DESCRIPTION@/From the ibiblio archive of the TECOC-146 program.\n This, here, now has only the minimal changes to make it compile.\n Also, a package definition for Guix is within packages\/here\/. This, in fact, is the current object of this here./' -i
+    sed packages/here/teco.scm -e 's/@SYNOPSIS@/ the Text Editor and COrrector program/' -e 's/@DESCRIPTION@/From the ibiblio archive of the TECOC-146 program.\\n This, here, now has only the minimal changes to make it compile.\\n Also, a package definition for Guix is within packages\/here\/. This, in fact, is the current object of this here./' -i
 }

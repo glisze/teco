@@ -42,14 +42,14 @@
 				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
 				(invoke "sh" "-c" "autoreconf -vif"))))))
    (inputs
-    '(("ncurses",ncurses)))
+    `(("ncurses" ,ncurses)))
    (native-inputs
     `(("autoconf" ,autoconf)
       ("automake" ,automake)
       ("perl" ,perl)
       ("git" ,git)
       ("texinfo" ,texinfo)
-      ("pkg-config",pkg-config)))
+      ("pkg-config" ,pkg-config)))
    (synopsis "teco:  the Text Editor and COrrector program")
    (description
     "From the ibiblio archive of the TECOC-146 program. This, here, now has only the minimal changes to make it compile. Also, a package definition for Guix is within packages/here/. This, in fact, is the current object of this here.")
