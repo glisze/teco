@@ -14,7 +14,7 @@
 ;; Commentary
 ;;
 
-;; guix build -L ./ @PACKAGE@ -K
+;; guix build -L ./packages @PACKAGE@ -K
 
 (define-public @PACKAGE@
   (package 
@@ -41,14 +41,15 @@
 				(invoke "sh" "-c" "touch ./ChangeLog")
 				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
 				(invoke "sh" "-c" "autoreconf -vif"))))))
+   (inputs
+    '(("ncurses",ncurses)))
    (native-inputs
     `(("autoconf" ,autoconf)
       ("automake" ,automake)
       ("perl" ,perl)
       ("git" ,git)
       ("texinfo" ,texinfo)
-      ("pkg-config",pkg-config)
-      ("ncurses",ncurses)))
+      ("pkg-config",pkg-config)))
    (synopsis "@PACKAGE@: @SYNOPSIS@")
    (description
     "@DESCRIPTION@")

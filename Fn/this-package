@@ -1,6 +1,6 @@
 this-package () 
 { 
     ( D="define this package" );
-    git-fetch teco deploy/v 0.0.52-42dd;
+    git-fetch $PACKAGE $PREFIX $VERSION;
     package-concrete > packages/here/teco.scm
 }
