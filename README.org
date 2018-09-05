@@ -1,4 +1,5 @@
-* teco -*- mode: org; -*-
+* COMMENT 2018.09.05  -*- mode: org; -*-
+* teco
 A clone of a port of the Text Editor and COrrector program
 
 ** Unix Command line 
