@@ -1,0 +1,73 @@
+ngse18@castle.ed.ac.uk (J R Evans) writes:
+
+>Does anyone still have a set of Stallman's
+>original emacs?  Just how much of later emacs did they implement and
+>how well do they work in modern TECO's? [Any changes needed should be
+>minimal, surely?]
+
+As an attempt to answer this, here's a brief history of TECO, cobbled
+together from rumors and forgotten documents.  Please feel free to
+post corrections.
+
+The original Emacs was a set of TECO macros written on top of MIT
+TECO, which ran under ITS (MIT's Incompatible Timesharing System) and
+TOPS-10 and TENEX on DEC PDP-10s, and later PDP-20s.  The name "Emacs"
+stands for "editing macros" originally written in TECO.
+
+As Emacs became popular, it became more important than the TECO
+"beneath" it.  Many Emacs users didn't even know TECO, or need to.
+Improvements to TECO were made specifically to improve Emacs.  One of
+these improvements was changing TECO from an interpreter to a
+compiler, which allowed TECO macros to execute fast enough to make
+Emacs bearable.  This TECO actually compiles interactively-typed
+command strings before executing them.  What fun!
+
+Portablility wasn't a concern during this effort.  When the time came
+to port Emacs to other machines, Stallman decided to use a better
+language than TECO for the base.  Even with all the improvements, TECO
+isn't a great language for writing large programs.  Most Emacs editors
+use some form of Lisp, which is one of the few langauges other than
+TECO with the flexibility needed by a customizable editor like Emacs.
+
+While all this was going on, people using various smaller DEC machines
+needed a fast, powerful editor, so they wrote TECOs for PDP-11s and
+PDP-8s.  These TECOs evolved separately, and had slightly different
+commands and features.  At some point Stan Rabinowitz started an
+effort in the DECUS TECO SIG to standardize them.
+
+Stan got the maintainers of TECO-10 (for PDPs running TENEX and TOPS),
+TECO-11 (for PDP-11s running RSX, RT-11 or RSTS/E), TECO-8 (for PDP-8s
+running OS/8) to bring ther programs closer together, but several
+somewhat minor differences still exist.  Later, Rick Murphy translated
+TECO-11 to TECO-32 for VAXes running VMS.  TECO-32 is functionally
+identical to TECO-11.  These TECOs are described by the "Standard TECO
+Manual" (used to be the PDP-11 TECO Manual), much of which was written
+by Stan and Mark Bramhall at DEC.  The manual is in the archive on
+usc.edu in the teco.doc file.  The version of the manual in the
+archive is more up-to-date than the one you'll get from DEC, because
+they haven't updated the documentation folks.
+
+The original TECO is far more powerful than the DEC versions.  It had
+many commands that make sense only on PDP-10s or under operating
+systems on 10s and 20s, and is too large to fit on machines with
+limited memory.  Some users of the original TECO consider it the only
+"real" TECO.
+
+The TECOs found in the archive on usc.edu are all based on the TECO
+described by the "Standard TECO Manual".  I've considered adding the
+original TECO and Emacs to the archive, but simply haven't gotten
+around to it.  Adding it would probably more than double the size of
+the archive.  At the risk is raising that hackles of its users, I
+suggest that it is of only historical interest to most people, since
+10s and 20s are becoming rare.
+
+So: Stallman's original Emacs doesn't have a chance of running with
+what Russ calls "more modern" TECOs.  The Emacs packages in the
+archive, which are much smaller than the original, are the only game
+in town.  If you are interested in Emacs, GNU Emacs is by far the best
+Emacs (and probably the best editor) in existence.
+-- 
+Pete Siemsen                         Pete Siemsen            siemsen@usc.edu
+University of Southern California    645 Ohio Ave. #302      (213) 740-7391 (w)
+1020 West Jefferson Blvd.            Long Beach, CA 90814    (213) 433-3059 (h)
+Los Angeles, CA 90089-0251

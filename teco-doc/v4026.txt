@@ -1,0 +1,302 @@
+SYBIL::BRAMHALL                   ** TECO **                 28-MAR-1985 15:09
+Note 33.0                 -< TECO V40 for VAX/VMS >-              No responses
+------------------------------------------------------------------------------
+
+There now exists a new TECO (version 40) for VAX/VMS only.  It can be
+found in....
+
+The TECO.EXE goes into your system's SYS$SYSTEM directory.  TECO.EXE
+has a small number of small fixes and implements two new things:
+
+1) If the command EG$$ is given and if a DCL symbol named TECO_EG exists
+   and is non-null then TECO will execute TECO_EG as a command upon exit.
+   Useful for creating 'compile class' subsystems.
+
+2) If the CPU you are using does not have hardware compatibility mode
+   (e.g., uVAX I) or if the logical name TEC$USE_EMULATOR is defined
+   then TECO will attempt to load and use the PDP-11 instruction set
+   emulator....
+
+------------------------------------------------------------------------------
+This document describes TECO32 V40.26.
+
+	Questions or problems reports on TECO32 should be sent
+	to Rick Murphy at ....
+
+	Differences between VMS TECO-11 and TECO-32
+
+	EO [Version] of TECO32 is 40. It is TECO-11 version 39, with
+	the change to EG$$. EG without an argument executes the DCL
+	command TECO_EG, if a TECO_EG symbol exists.
+	Also included is the TECO-11 V40 EE flag.
+	Setting this flag allows an alternate 'escape' character,
+	for terminals using LK201 keyboards.
+	For example, 96EE sets accent grave (`) as the alternate
+	escape character. The EE flag is set to the ascii value
+	of the alternate delimiter. This character will echo
+	as `. Setting the 8192 bit in ET sets EE to 96.
+|	When read by ^T or in screen mode, the alternate escape
+|	character will return an escape (27).
+
+	TECO32 does 32-bit math. Flags [such as the ET flag]
+	are sign-extended from 16 bits to 32 when interrogated.
+
+	-1EJ [Operating system version] returns 1024.
+	TECO-11 returns 5.
+	Code such as:
+	-1EJ-5"E...'
+	can be changed to:
+	-1EJ-5*(-1EJ-1024)"E...'
+	And work on either TECO-32 or TECO-11.
+
+	Q-registers and the text buffer can grow up to 65535 characters
+	in size, subject to virtual memory constraints.
+
+	The DETACH bit in ET detaches your physical terminal from
+	your process. [Similar to ^Y, DISCONNECT/CONTINUE].
+
+	Note that in the previous release, this did a simple
+	SPAWN. See the information on :EGSPAWN $ for the replacement.
+	The DETACH bit can be interrogated to check if the user has
+	re-CONNECTed to the process. For example:
+	0,64ET! Disconnect ! <... some work ... ET&64"E 0;>
+	The iteration exits when the user re-connects.
+
+	The :EGLOG command can be used to manipulate logical names.
+	For example:
+	:EGLOG foo$	Loads the translation of logical name FOO into
+			the filespec buffer. Returns -1 if the name exists,
+			0 if not.
+	:EGLOG foo $	Deassigns logical name foo
+	:EGLOG foo bar$	Defines the logical name foo
+	Note that this is consistent with the :EGSYM command
+	in TECO-11 and TECO32.
+	All logical name assignments are done in the process table.
+
+	To spawn a subprocess, use the :EGSPAWN command.
+	(Spawn can be abbreviated to SPA).
+	The format is:
+	:EGSPA[WN][/QUALIFIERS][ COMMAND]$
+	All of the qualifiers allowed on the DCL spawn command are
+	allowed.
+|	V40.26 allows the /TABLE qualifier. This has not been tested on
+|	VMS versions prior to V4.2.
+	For example:
+	:EGSPAWN/PROMPT="Foo> "/PROCESS="TECO_SUB"$
+	.. spawns an interactive subprocess.
+	:EGSPAWN DIR/OUT=TEMP.TMP *.BAR$
+	spawns a command.
+	The return value for :EGSPA$ is the subprocess exit status.
+
+|	V40.26 also added the :EGATTACH Command.
+|	Again, it is consistent with the DCL ATTACH command:
+|	:EGATTACH process-name$
+|	   attaches to the named process
+|	:EGATTACH/IDENTIFICATION=pid$
+|	   attaches to the process with the given PID.
+|	:EGATTACH$
+|	   attaches to the parent process
+
+	TECO can now be used as your mail editor:
+	$ DEFINE MAIL$EDIT CALLABLE_TECO
+	TECOSHR.EXE must be installed for this to work.
+	No INSTALL qualifiers are required; /SHARE is recommended.
+
+|	V40.26 now uses scrolling regions and editing functions for
+|	screen updating on terminals with the proper functions.
+|	This has been found to 'break' with some editing macros
+|	that modify the terminal characteristics. A new :W flag,
+|	8:W, has been added. Setting 8:W nonzero disables TECO's
+|	use of scrolling regions.
+|	Another new terminal flag is 9:W.
+|	It returns a bit-encoded mask that describes the terminal
+|	characteristics. Attempts to set 9:W are ignored.
+|	The value returned has the following values:
+|	1	Set if terminal is an ANSI CRT
+|	2	Set if the terminal has EDIT mode features
+|	4	Set if the terminal can do reverse scrolling
+|	8	Set if the terminal has special graphics
+|	16	Set if the terminal can do reverse video
+|	32	Set if the terminal can change its width
+|	64	Set if the terminal has scrolling regions
+|	128	Set if the terminal can erase to end-of-screen
+
+
+Callable TECO interface routines
+
+	Note: V40.10 changed the interface routine names
+	from TEC$xxx to TECO$xxx. Sorry.
+	Now, callable routines return reasonable error status.
+	If, for example, TEC$DO_COMMAND exits with a search
+	failure, (?SRH), the value TECO$_SRH is returned.
+	TECO$INIT				Initialize TECO
+	Call this routine once before calling any other interface
+	routines. It is not necessary to initialize TECO before
+	calling TECO$EDIT.
+
+	TECO$EDIT(in[,[out],[com],[opt],[xlt])	Callable editor entry point
+	This routine is called to start the callable editor.
+	Arguments:
+	in	Descriptor of the input file name
+	out	Descriptor of the output file name. Defaults to same
+		name as the input file. [I.E. EBinput-file$$]
+	com	Descriptor for the TECO startup command.
+		If this argument is not specified, and the
+		TECO$M_NOCOMMAND option is not specified, the standard
+		TECO initialization is done. The logical name TEC$INIT
+		is used to find a startup command file.
+	opt	TECO options.
+		Address of an options longword.
+		TECO$M_NOCOMMAND	Don't execute the TECO
+					initialization file
+		TECO$M_READONLY		Open the file in INSPECT mode
+	xlt	Address of a bound procedure mask [BPM] for the
+		xlate routine. See the information below.
+
+	TECO$EDIT returns a status value. Any TECO error message is
+	mapped into a status code of TECO$_xxx, where xxx is the
+	TLA [three-letter-abbreviation] of the error message.
+
+	TECO$POINTERS([dot][,z])		Returns position of dot and z
+	Arguments:
+	dot	Longword, passed by reference. Gets text pointer
+		relative to the start of the buffer (.) in TECO.
+	z	Longword, passed by reference. Gets a pointer
+		to the end of the text buffer. Z in TECO.
+		
+	TECO$SET_DOT(new-dot)			Set pointer
+	Argument:
+	new-dot	Longword, passed by reference.
+		New value to set into the text pointer.
+		Must be between 0 and the end of the buffer [Z].
+
+	TECO$ADVANCE_LINE(lines)		Advance lines [nL command]
+	Argument:
+	lines	Longword, passed by reference.
+		Number of line terminators to advance.
+		Acts like the nL command in TECO; 0 moves
+		to the start of the current line, 1 moves
+		forward one line, -1 backward one line.
+
+	TECO$DELETE_TEXT(chars)			Deletes characters
+	Argument:
+	Chars	Longword, passed by reference.
+		Number of characters to delete. 
+		Acts exactly like the nD command in TECO.
+		3 deletes 3 characters after DOT,
+		-3 deletes 3 characters before DOT.
+		Exceeding the buffer boundaries will generate
+		a "DTB	Delete too big" error.
+
+	TECO$GET_Q_REG(q-name,[value],[text])	Returns text and
+						value of Q-register
+	Arguments:
+	q-name	Descriptor for name of the q-register to
+		obtain. Upper or lower case character, optionally
+		preceded by a dot (.) for local q-registers.
+		Any descriptor type allowed by STR$COPY_DX is
+		allowed. The text is copied from the q-register
+		to the destination string.
+	value	Longword, passed by reference. Gets 'value' portion
+		of q-register.
+	text	Descriptor for string to receive the text stored
+		in the q-register.
+
+	TECO$LOAD_Q_REG(q-name,[value],[text])	Loads q-register text
+						and/or value
+	Operates the same as GET_Q_REG, except that it (of course)
+	loads rather than reads the q-register.
+	The text is copied from the source string to the q-register
+	using STR$COPY_DX.
+
+	TECO$MUNG(q-name)			Executes q-register
+	Argument:
+	Q-name	Descriptor for q-register name to execute.
+	MUNG executes the TECO program loaded into the given q-register.
+	The current TECO command level's local q-registers are saved
+	before executing the MUNG, unless the q-register name specifies
+	a local q-register.
+
+	TECO$LOAD_TEXT(new-text[,delete])	Load text buffer
+	Arguments:
+	new-text Descriptor for text string to be loaded into
+		the text buffer. The text is copied from the source
+		string to the text buffer.
+	delete	Longword, passed by reference.
+		Number of characters to delete before insert.
+		Negative values delete text before DOT, positive
+		values delete after DOT.
+
+	TECO$GET_TEXT(text[,[start][,end]])	Gets descriptor of text buffer
+	Arguments:
+	text	Descriptor of string to receive a copy of the extracted
+		text. The text extracted is copied to this string.
+	start	Longword, passed by reference.
+		Text buffer offset to start the extract at. Defaults
+		to zero [beginning of buffer, B].
+	end	Longword, passed by reference.
+		Text buffer offset to end at. Defaults to end of
+		text buffer [Z].
+
+	The START and END values are checked and limited to the beginning
+	and end of the text buffer, respectively.
+
+	TECO$DO_COMMAND(command)		Execute a TECO command
+	Arguments:
+	command	String, passed by descriptor.
+		TECO command to execute.
+	TECO$DO_COMMAND executes a single TECO string and returns.
+	Returned values [m,n] can be obtained with the TECO$VALUES routine.
+
+	TECO$START([flag])			Allow user TECO commands
+	TECO$START turns control over to the TECO interpreter until
+	an exit command is executed [EX, EG, or :EGXLT].
+	Argument:
+	flag	Longword, passed by reference. Default is zero.
+		If true [low bit set], EXIT commands return control
+		to caller immediately, without paging out the text buffer.
+
+	TECO$GET_VALUES([m][,n])
+	Arguments:
+	m	Longword, passed by reference.
+		This longword receives TECO's M [first numeric] value.
+	n	Longword, passed by reference.
+		This longword receives TECO's N [second numeric] value.
+
+	This routine is used to obtain numeric values
+	from TECO code.
+
+	TECO$SET_VALUES([m][,n])
+	Arguments:
+	m	Longword, passed by reference.
+		This longword is use to set TECO's M [first numeric] value.
+	n	Longword, passed by reference.
+		This longword is used to set TECO's N [second numeric] value.
+
+	This routine is used to set numeric return values
+	for TECO code. If the M argument is present, it sets the COMMA flag.
+
+	Callable TECO Xlate routine
+
+	When TECO$EDIT is called, one of the arguments is the XLATE routine.
+	This routine is called by the :EGXLT command.
+	The format of this command is:
+	m,n:EGXLT string$
+	It calls the XLATE routine with 3 arguments:
+	1.	The string given. Passed by descriptor. Leading spaces
+		and tabs are removed from this string.
+	
+	2.	Two arguments, passed by reference. The first is the M
+		value, the second N. Modifying these locations modifies
+		the XLATE routine's return values.
+	The return value to the :EGXLT command is, by default,
+	-1 if there is an XLATE routine, 0 if there is none.
+	The XLATE routine itself can modify the return values with a
+	call to TECO$VALUES.
+
+	The XLATE hook is analogous to the callable EDT facility.
+	It allows a user of Callable TECO to easily return to the calling
+	program, perform some operation, and then return to TECO.
+-------
+
+

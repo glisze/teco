@@ -1,0 +1,516 @@
+	TECO V39 Release Notes
+	Mark Bramhall
+	13-Jan-1984
+
+	Changes to TECO since TECO V36
+
+This is a (fairly cryptic) list of the changes that have been made between
+TECO V36 (the last time the TECO manual was fully up to date) and TECO V39.
+
+User visible differences TECO V36 to TECO V39:
+
+1) DEC Multi-national character set handling
+    TECO now fully supports the DEC Multi-national character set.  This
+    means that all character codes handled by TECO are 8-bit character
+    codes.  This change affects the following:
+    a) Many commands use to trim data to 7 bits
+	All commands now handle data as 8-bit data.
+    b) Output conversions
+	If your terminal is a 7-bit terminal (see ET bit 4096) then:
+	    i) Unprintable and/or illegal codes in the 128 to 255 range
+	       are output as [xy], where the xy is the hexidecimal for
+	       the code.
+	    ii) Valid DEC Multi-national codes are output as <xy>, where
+	       the xy is the LK201 keyboard compose sequence for the code.
+	If your terminal is an 8-bit terminal (see ET bit 4096) then:
+	    i) Unprintable and/or illegal codes in the 128 to 255 range
+	       are output as [xy], where the xy is the hexidecimal for
+	       the code.
+	    ii) Valid DEC Multi-national codes are output as themselves.
+	The scope watch feature (W commands) always uses the [xy] and <xy>
+	notation due to internal coding limitations within that feature.
+    c) Search string matching
+	If generic search matching is enabled (^X = 0) then TECO will match
+	characters without regard to case and/or diacritical marks.
+
+2) ET bits
+    a) 4096 (8-bit terminal)
+	This new ET bit reflects and can change the state of the terminal
+	characteristic EIGHTBIT/NOEIGHTBIT.  This bit is initially clear
+	if the terminal is set to NOEIGHTBIT; it is initially set if the
+	terminal is set to EIGHTBIT.  Changing the bit will cause the terminal
+	to change its EIGHTBIT/NOEIGHTBIT characteristic.  TECO will restore
+	the terminal to its original state upon exit.
+    b) 8192 (accept accent grave, "`", as ESCape during command input)
+	This new ET bit is initially clear.  If set, typing an accent grave
+	(`) during command input (only!) will have the same effect as
+	typing an ESCape.  This random hack was dictated by the new LK201
+	keyboard which doesn't have an ESCape key, but does have accent
+	grave in the position ESCape used to be in...
+
+3) 0:W (scope type)
+    The valid scope types for 0:W are now:
+	0	VT52
+	2	VT100 in VT52 mode
+	4	VT100 in ANSI mode
+	6	VT05
+	8	VT102 in ANSI mode
+	10	VK100 (GIGI)
+
+4) ED bits
+    a) 1 - ^ (up-arrow) in search arguments is a literal ^
+	If 0, ^ in search arguments means that the next
+	character should be interpreted as a control character.
+    b) 2 - Disables Yank protection
+	If 0, the Y, N, and _ commands are aborted if they
+	would result in data being lost.
+    c) 4 - Disallow memory expansion when reading in a text page
+	If 0, memory is expanded, if needed, so that the whole
+	text page fits in the text buffer.
+    d) 8 - Reserved by PDP-8 TECO...
+    e) 16 - Leaves buffer pointer unchanged on search failures
+	If 0, search failures move the buffer pointer to the
+	beginning of the text buffer.
+    f) 32 - Enable immediate mode commands
+	See "Immediate mode commands" below.
+    g) 64 - Only move the buffer pointer by one on iterative search failures
+	If 0, the buffer pointer moves by the length of
+	the search string on iterative search failures.
+    h) 128 - Disable scrolling's automatic text buffer display update
+	If scroll mode is enabled (7:W <> 0), TECO normally updates the text
+	buffer display just before printing its * prompt.  Setting 128 in ED
+	inhibits this automatic update (see the immediate ^W command).
+
+5) Immediate ^W command
+    If scroll mode is enabled (7:W <> 0) then typing a ^W immediately after
+    TECO prompts with its * will cause the text buffer display to be updated.
+    This is useful to recover from broadcast messages and/or in conjunction
+    with ED bit 128.
+
+6) Local Q-registers
+    The set of 36 Q-regs (0-9, A-Z) has been expanded to include a set of
+    36 local Q-regs that are unique to each macro invocation level.  The
+    standard 36 Q-regs are now called the global Q-regs and remain named
+    0-9 and A-Z.  The 36 local Q-regs are named .0-.9 and .A-.Z (i.e., the
+    global name preceeded by a dot).  There's a set of 36 local Q-regs for
+    each and every macro (Mq) invocation level, including the top (command
+    input) level.  When a macro is invoked (via Mq), the current local Q-regs
+    are saved and a new set of local Q-regs are created.  When the macro
+    exits, its local Q-regs are destroyed and the previous levels local
+    Q-regs are restored.  If a fatal error occurs and TECO goes back to
+    command level, all local Q-regs from macro invocations are destroyed
+    and command level's local Q-regs are restored.  This eliminates the
+    need for a macro to save ([ commands) and then restore (] commands)
+    Q-regs.  A local Q-reg name can be used in any command that takes a
+    Q-reg name.
+
+7) M command extensions
+    a) A normal M command (Mq) creates a new set of 36 local Q-regs and
+       executes the command string in global Q-reg q.
+    b) A colon modified M command (:Mq) does not create a new set of 36
+       local Q-regs, but rather keeps the current of local Q-regs active,
+       and executes the command string in Q-reg q.
+    c) Any M command that references a local Q-reg (M.q and/or :M.q) behaves
+       like a colon modified M commmand; the current local Q-regs are used.
+    In summary:
+	 Mq	New set of local Q-regs
+	:Mq	Current set of local Q-regs
+	 M.q	Current set of local Q-regs
+	:M.q	Current set of local Q-regs
+
+8) FR command extensions
+    The FR command now comes in the following forms:
+    a) FRtext$
+	Same as ^SDItext$, i.e., delete the preceeding last found search
+	string, inserted text, etc. and replace it with "text".
+    b) nFRtext$
+	Same as nDItext$, i.e., delete the preceeding (n < 0) or following
+	(n > 0) n characters and replace them with "text".
+    c) m,nFRtext$
+	Same as m,nKItext$, i.e., delete the characters spanned by m,n and
+	replace them with "text".
+    In all cases, the text buffer pointer is positioned immediately after
+    "text" after the operation.
+
+9) ^E flag handling
+    Everytime text is read into the text buffer, the ^E (form feed) flag
+    is set to -1, if the text read terminated due to a form feed, or 0,
+    if the text read terminated elsewise.  The ^E flag can now also be
+    set, e.g., 0^E and/or -1^E.  While any value can be set into the ^E
+    flag, only the values 0 and -1 have any approved meaning.
+
+10) Backing up during editing
+    TECO can now move backwards as well as forwards in the file being
+    edited.  This affects most file movement commands; the affect is
+    that negative arguments now position backwards in the file in the
+    obvious fashion.  Commands affected include:
+    a) N and FN searches
+	N and FN searches with negative arguments now proceed backwards
+	through each text buffer and through the file being edited.  They
+	terminate upon the correct search string match and/or beginning-of-
+	file.  A colon modified N or FN command returns 0 at BOF.
+    b) _ and E_ searches
+	_ and E_ searches with negative arguments now proceed backwards
+	through each text buffer and through the file being edited.  They
+	terminate upon the correct search string match and/or BOF.  A colon
+	modified _ or E_ command returns 0 at BOF.  _ searches are still
+	subject to "Yank protection".  Remember that text file pages are
+	DESTROYED by _ and E_ searches; there's no way to get them back!
+    c) Y commands
+	A -Y command will, subject to "Yank protection", DESTROY the current
+	text buffer and bring in the previous page.  nY and -nY commands
+	are still illegal; multiple yanks are done with n<Y> and n<-Y>.
+	A colon modified -Y command return 0 at BOF.
+    d) P commands
+	A -P command will back up one page in the file begin edited.  A -nP
+	command will back up n pages.  A colon modified -P or -nP command
+	return 0 at BOF.  The command strings <:P;> and <-:P;> will take
+	you to EOF or BOF, respectively.
+    e) A commands
+	The A command has many formats:
+	 A	Append next page of text to current buffer
+	 -A	Illegal (yields ?IAA, Illegal A arg)
+	 :A	Append next page of text to current buffer; return -1 if
+		something was appended, 0 otherwise
+	 -:A	Illegal (yields ?IAA, Illegal A arg)
+	 n:A	Append next n lines of text to current buffer; return -1
+		if something was appended, 0 otherwise
+	 -n:A	Illegal (yields ?IAA, Illegal A arg)
+	 nA	Return value of character at (.+n); return -1 if (.+n) is
+		outside of the text buffer [n can be + or -]
+
+11) Null tags in O commands
+    The indexed goto command (e.g., nOtag1,tag2,tag3$) will now allow
+    null tags, e.g., nOtag1,tag2,,tag4,tag5$.  If the index selects the
+    null tag then execution flows to the next sequential command.
+
+12) Immediate mode commands
+    Bit 32 in the ED flag enables immediate mode commands.  When immediate
+    mode commands are enabled and the first character typed in response
+    to TECO's * prompt is ESCape, TECO will read further characters decoding
+    them as shown in the following table.  This gives TECO a simple method of
+    decoding keyboard keys that generate ESCape sequences as immediate mode
+    commands.  Each decoded keyboard key yields two values: the key's type
+    code (in the range 0 through 3) and the key's value code (in the range
+    0 through 127).  These values are passed to the TECO macro in Q-reg A
+    by executing an effective <type>,<value>MA$$.  The macro in Q-reg A can
+    be coded similiar to:
+	UA				! Save the <value> code in A	!
+	@O!TYPE0,TYPE1,TYPE2,TYPE3!	! Dispatch on <type> code	!
+	!TYPE0!				! Type 0 codes come here	!
+	QA@O!VAL0,VAL1,...
+    a) Type 0 - ESCape followed by a control character
+	The value code is the control character's code (0 through 31).
+    b) Type 1 - ESCape followed by a letter (e.g., ESC, A)
+		ESCape followed by [ then a letter (e.g., ESC, [, A)
+		CSI    followed by a letter (e.g., CSI, A)
+		ESCape followed by O then an uppercase letter (e.g., ESC, O, A)
+		SS3    followed by an uppercase letter (e.g., SS3, A)
+	The value code is the letter's character code trimmed to 5 bits
+	(0 through 31).  Common keys of type 1 are:
+	    Up arrow	Value = 1
+	    Down arrow	Value = 2
+	    Left arrow	Value = 4
+	    Right arrow	Value = 3
+	    PF1		Value = 16
+	    PF2		Value = 17
+	    PF3		Value = 18
+	    PF4		Value = 19
+	    ENTER	Value = 13
+    c) Type 2 - ESCape followed by ? then a letter (e.g., ESC, ?, p)
+		ESCape followed by O then a lowercase letter (e.g., ESC, O, p)
+		SS3    followed by a lowercase letter (e.g., SS3, p)
+	The value code is the letter's character code trimmed to 5 bits
+	(0 through 31).  Common keys of type 2 are:
+	    Keypad ,	Value = 12
+	    Keypad -	Value = 13
+	    Keypad .	Value = 14
+	    Keypad 0	Value = 16
+	    Keypad 1	Value = 17
+	     ...	 ...
+	    Keypad 8	Value = 24
+	    Keypad 9	Value = 25
+    d) Type 3 - ESCape followed by [ then a digit string then ~
+		CSI    followed by a digit string then ~
+	The value code is the digit string value (0 through 127).
+	All of the LK201 keyboard's editing and function keys generate
+	sequences of this format.
+
+13) ^T command extensions
+    The ^T command now comes in the following forms:
+    a) ^T
+	Read the next input character and return its value.
+    b) n^T
+	Print the character whose value is n.  n is used mod 256.
+    c) :^T
+	Read and decode the next input character; return its type code
+	and value as follows (similiar to Immediate Commands above):
+	    Type = 0	Normal character, value is character's value.
+	    Type = 1	Control character (except ESCape, CSI, and SS3),
+			value is control character's value.  A typed RETURN
+			yields Type = 1, Value = 13 and a subsequent
+			^T or :^T command does not return a LINE FEED.
+	    Type = 2	Same as Immediate Commands type 0.
+	    Type = 3	Same as Immediate Commands type 1.
+	    Type = 4	Same as Immediate Commands type 2.
+	    Type = 5	Same as Immediate Commands type 3.
+    d) n:^T
+	Print the character whose value is n in (one shot) binary output
+	mode.  n is used mod 256.
+
+14) n,1:W command
+    The n,1:W command (change scope width) automatically informs the
+    executive of your terminal's new width setting and automatically
+    issues the appropriate sequence to physically change the terminal's
+    screen mode (80 vs. 132 column mode) if needed.
+
+VAX/VMS specific user visible differences TECO V36 to TECO V39:
+
+1) ET bits
+    a) 256 (truncate long lines)
+	Truncate long lines now reflects and can change the state of the
+	terminal characteristic WRAP/NOWRAP.  This bit is initially clear
+	if the terminal is set to WRAP; it is initially set if the terminal
+	is set to NOWRAP.  Changing the bit will cause the terminal to change
+	its WRAP/NOWRAP characteristic.  TECO will restore the terminal to
+	its original state upon exit.
+
+2) ^T handling
+    VMS's handling of ^T (one line status report) is automatically turned
+    off by TECO if it ever asks the user for input.  The original state of
+    ^T handling is restored upon exit.  MUNGed TECO macros that never ask
+    the user for input do not affect VMS's ^T handling.
+
+3) File record format/attribute handling
+    Below is a complete list of valid TECO input file record format/attribute
+    combinations and the resulting file record format/attribute combination
+    for EB commands:
+	     Input			    Output
+	Format	Attribute		Format	Attribute
+	 Fix	 none			 Var	 Implied
+	 Fix	 Implied		 Var	 Implied
+	 Fix	 FORTRAN		 Var	 FORTRAN
+	 Var	 none			 Var	 Implied
+	 Var	 Implied		 Var	 Implied
+	 Var	 FORTRAN		 Var	 FORTRAN
+	 VFC	 Print			 Var	 Implied
+	 Stm	 none			 Stm	 Implied
+	 Stm	 Implied		 Stm	 Implied
+
+4) File specification qualifiers
+    Below is a complete list of TECO's file specification qualifiers:
+    a) Input processing
+	/-CR	Force "none" file record attributes
+	/CR	Force "Implied" file record attributes
+	/FT	Force "FORTRAN" file record attributes
+	/FTN	Same as /FT
+	/B2	BASIC-PLUS-2 input processing (removes trailing &'s)
+    b) Output processing
+	/VAR	Create file record format "Var"
+	/STM	Create file record format "Stm"
+	/-CR	Create file record attribute "none"
+	/CR	Create file record attribute "Implied"
+	/FT	Create file record attribute "FORTRAN"
+	/FTN	Same as /FT
+	/NV	Ensure new version of file (always done for EBs)
+	/B2	BASIC-PLUS-2 output processing (adds trailing &'s as needed)
+    c) Open/create/access options
+	/RW	Rewind before open/create
+	/SH	Enable file sharing
+	/SHR	Same as /SH
+
+5) Help facility
+    TECO has a builtin help facility.  This can be used in any of three ways:
+    a) Issuing a HELP command from TECO's * prompt.  This HELP command obeys
+       the standard VAX/VMS HELP command syntax rules.  The HELP commmand may
+       be terminated by either RETURN or $$.
+    b) Typing the / command immediately after an error.  TECO will respond
+       with a one paragraph description of the error.
+    c) Setting EH to 3.  This causes TECO to automatically respond with a
+       one paragraph description of errors when they occur.
+
+6) EDIT/TECO
+    TECO has an official DCL interface; the command is EDIT/TECO.
+
+Hacker visible differences TECO V36 to TECO V39:
+
+1) CRTRUB handles multiple scope types
+    CRTRUB (the scope type definition module) has been extended to handle
+    up to 63 different scope types (the limit used to be 4).  Also, the
+    format of this modules has changed.  Hackers with private CRTRUBs will
+    need to re-code them...
+
+2) n:W command values
+    The n:W command values have been grouped to allow the addition of user
+    controlled values.  0 <= n <= 255 is reserved for standard TECO usage.
+    Of these, 0 through 7 are currently implemented; 8 through 255 are
+    reserved and always return a zero.  256 <= n <= 32767 is for user
+    usage.  There are two routines in CRTRUB that handle commands in this
+    range: USRPRM for returning a value and USRSET for setting a new value.
+
+	EDIT/TECO DCL command syntax summary
+
+I've officially registered a DCL interface to TECO.
+
+Please note that TECO on VAX/VMS will still continue to respond to the old
+foreign command interface, viz:
+
+	$ TECO :== $SYS$SYSTEM:TECO TECO
+	$ MAKE :== $SYS$SYSTEM:TECO MAKE
+	$ MUNG :== $SYS$SYSTEM:TECO MUNG """
+
+as well as still responding to being simply run, viz:
+
+	$ RUN SYS$SYSTEM:TECO
+
+The new DCL syntax for TECO is as follows:
+
+1) To invoke TECO to edit/create a file use
+
+    EDIT/TECO [ qualifier(s) ] [ edit_file_spec ]
+
+    (D)	/COMMAND		Set up from logical TEC$INIT, if any
+	/COMMAND=ini_file_spec	Set up from file "ini_file_spec"
+	/NOCOMMAND		No set up
+
+    (D)	/CREATE			Create "edit_file_spec" if it doesn't exist
+	/NOCREATE		Abort if "edit_file_spec" doesn't exist
+
+    (D)	/MEMORY			Use TECO's memory logical TEC$MEMORY
+	/NOMEMORY		Ignore TECO's memory logical TEC$MEMORY
+
+	/OUTPUT=out_file_spec	Edit from "edit_file_spec" into "out_file_spec"
+    (D)	/NOOUTPUT		Edit "edit_file_spec" to next higher version
+
+	/READ_ONLY		Only read "edit_file_spec"
+    (D)	/NOREAD_ONLY		Edit "edit_file_spec"
+
+    If "edit_file_spec" is omitted then TECO will re-edit the file in its
+    memory logical TEC$MEMORY or, if TEC$MEMORY doesn't exist or /NOMEMORY
+    is specified, TECO will simply start up in command mode editing no file.
+
+2) To invoke TECO to execute a TECO macro use
+
+    EDIT/TECO/EXECUTE=cmd_file_spec [ qualifier(s) ] [ argument ]
+
+    (D)	/COMMAND		Set up from logical TEC$INIT, if any
+	/COMMAND=ini_file_spec	Set up from file "ini_file_spec"
+	/NOCOMMAND		No set up
+
+    (D)	/CREATE			Legal, but ignored...
+	/NOCREATE		Legal, but ignored...
+
+    (D)	/MEMORY			Legal, but ignored...
+	/NOMEMORY		Legal, but ignored...
+
+    "Cmd_file_spec" is executed as a TECO macro with "argument" placed
+    in the text buffer.  "Cmd_file_spec" defaults to a file type of .TEC.
+    "Argument" must be enclosed in double quotes if it contains any blanks
+    and/or special characters.
+
+    /[NO]CREATE and /[NO]MEMORY are legal, but ignored, so that DCL symbols
+    like the following can be used with the /EXECUTE=cmd_file_spec qualifier:
+
+	$ TECO :== EDIT/TECO/NOCREATE
+	$ TECO :== EDIT/TECO/NOMEMORY
+	$ TECO :== EDIT/TECO/NOCREATE/NOMEMORY
+	VAX/VMS specific goodies in TECO
+
+TECO has a built-in help facility.  There are three kinds of help:
+
+	1) A built-in HELP command with the same syntax as the DCL HELP
+	   command.
+
+	2) A long form error message printer triggered by typing a slash
+	   character (/) immediately after an error (just as an immediate
+	   question mark character (?) re-prints the erring command line).
+
+	3) Setting EH to 3 automatically prints the long form error
+	   message upon errors.
+
+The built-in HELP command can be used to get information about TECO or to
+access any standard VAX/VMS HELP library.  It's format is
+
+	HELP [[/LIBRARY]=[=]name] [key-1 [key-2 [...]]]
+
+Using the =name parameter selects a HELP library other than the TECO
+library.  The ==name format both selects the library for this HELP
+command and makes it the default library for subsequent HELP commands.
+
+For example
+
+  HELP ==HELP SYSTEM $ASSIGN
+
+would select the system HELP library, establish it as the default, and
+tell you about the Assign I/O Channel system service.
+
+The Key-n parameters obey the standard VAX/VMS HELP syntax rules.
+
+The built-in HELP command is only available interactively from TECO's
+main asterisk (*) prompt.  It is special cased and cannot be combined
+with normal TECO commands.  The built-in HELP command can be terminated
+by either RETURN or $$.
+
+The following special features of VAX/VMS TECO were designed to allow it
+to be a very flexible and powerful tool in building automated procedures.
+
+Exit status code
+
+	TECO's exit status code, as reflected by the DCL symbols $STATUS
+	and $SEVERITY, can be examined to determine how TECO exited:
+
+	 $STATUS    $SEVERITY	Exit reason
+
+	%X00000001	1	Normal exit (EX, 3 CTRL/Z's, etc.)
+	%X00000009	1	EG exit
+	%X1000002C	4	Error exit (error with 128 set in ET)
+	%X0???????     LBC	Fatal internal error exit
+
+:EG command support
+
+	The general form of a :EG command is
+
+		:EGcmd args$
+
+	:EG commands always return a value
+
+		-1	for success
+		 0	for 'cmd' not supported
+	       other	for error code unique to the 'cmd'
+
+	TECO supports all four of the standard :EG commands.  These
+	commands are used by various operating system independent TECO
+	macros.  All four commands operate in a similiar manner
+
+	:EGxxx$		Reads the logical name into Q-register *.  If the
+			logical name is undefined, Q-register * is set to
+			the null string.
+
+	:EGxxx $	Deletes (deassigns) the logical name.  This is a
+			nooperation if the logical name is already undefined.
+
+	:EGxxx text$	Creates (assigns) the logical name with an equivalence
+			string of 'text'.  Any previous definition of the
+			logical name is superseded.
+
+	The four standard :EG commands and their corresponding logicals are
+
+	INI	TEC$INIT	Used to find your private initializer
+	LIB	TEC$LIBRARY	Used to find your TECO macro library
+	MEM	TEC$MEMORY	Used to hold the last file you edited
+	VTE	TEC$VTEDIT	Used to find your scope editing macro
+
+	In addition to the above, TECO has a :EG command that lets
+	you create DCL local symbols.  The format is this command is
+
+	:EGSYM symbol_name symbol_value_string$
+
+Combining the DCL symbol creation capability with the special EG exit status
+code lets you do things like
+
+	$ <Invoke TECO with a macro like the following>
+		...
+		:@EG/SYM FILE_NAME foobar/ EG$$
+	$ IF $STATUS .NE. 9 THEN GOTO <Somewhere else>
+	$ BLISS 'FILE_NAME'
+	$ LINK 'FILE_NAME'

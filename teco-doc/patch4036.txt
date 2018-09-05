@@ -1,0 +1,19 @@
+When TECO32 v40.36 (distributed with VAX/VMS v5.3) is run from batch,  and
+a "0,256et" command is executed to turn off line wrapping on the terminal,
+TECO dies with "Reserved operand fault".  The following patch fixes the bug.
+
+$ set def sys$common:[syslib]
+$ patch tecoshr.exe
+rep/i 7150
+'tstw l^83e'
+'beql 71d6'
+exit
+'movl #1, r0'
+exit
+update
+exit
+$ install replace sys$share:tecoshr.exe
+
+Thanks to Rick Murphy at DEC.
+
+
