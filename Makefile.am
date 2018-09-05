@@ -35,3 +35,32 @@ dist_modules_DATA = \
    src/type.tes \
    src/unsqu.tes \
    src/vtedit.tes
+
+objectsdir = @tecoobjectdir@
+dist_objects_DATA = \
+   src/change.tec \
+   src/clpars.tec \
+   src/date.tec \
+   src/detab.tec \
+   src/dir.tec \
+   src/fmtmac.tec \
+   src/format.tec \
+   src/lowcase.tec \
+   src/makprnt.tec \
+   src/search.tec \
+   src/sewer.tec \
+   src/squ.tec \
+   src/sub.tec \
+   src/tecv40.tec \
+   src/tstbsl.tec \
+   src/tstcss.tec \
+   src/tstequ.tec \
+   src/tsto.tec \
+   src/tstpw.tec \
+   src/tstqr.tec \
+   src/tstsrc.tec \
+   src/tst.tec \
+   src/type.tec \
+   src/unsqu.tec \
+   src/upcase.tec \
+   src/vtedit.tec

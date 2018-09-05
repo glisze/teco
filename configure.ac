@@ -10,6 +10,7 @@ PKG_CHECK_MODULES([TINFO],[tinfo],
 AX_WITH_CURSES
 AC_CONFIG_HEADERS([src/config.h])
 TECO_MODULEDIR([${libdir}/teco])
+TECO_OBJECTDIR([${datarootdir}/teco])
 AC_CONFIG_FILES([
   Makefile
   src/Makefile
