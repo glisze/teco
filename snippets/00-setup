@@ -1,0 +1,5 @@
+TEC_INIT=~/.tecoc
+TEC_LIBRARY=${tecomoduledir}
+alias teco='tecoc teco -nocreate'
+alias temung='tecoc mung'
+alias temake='tecoc make'
