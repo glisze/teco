@@ -1,3 +1,4 @@
+Cloning into 'teco-0.0.71-eb7c'...
 (define-module (here teco)
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages perl)
@@ -19,15 +20,15 @@
 (define-public teco
   (package 
    (name "teco")
-   (version "0.0.63-c0f2")
+   (version "0.0.71-eb7c")
    (source (origin
 	    (method git-fetch)
 	    (uri (git-reference
 		  (url "https://github.com/glisze/teco.git")
-		  (commit "deploy/v0.0.63-c0f2")))
+		  (commit "deploy/v0.0.71-eb7c")))
 	    (sha256
 	     (base32
-	    "1wh20mp1hw50iqchf2w35irvv54i63lpw61fmc8564nswlkyw3iq"))))
+	    ""))))
    (build-system gnu-build-system)
    (arguments
     '(#:phases
@@ -37,7 +38,7 @@
 				(for-each (lambda (file)
 					    (patch-shebang file))
 					  (find-files "./scripts/"))
-				(invoke "sh" "-c" "echo 0.0.63-c0f2 > ./VERSION")
+				(invoke "sh" "-c" "echo 0.0.71-eb7c > ./VERSION")
 				(invoke "sh" "-c" "touch ./ChangeLog")
 				(invoke "sh" "-c" "sed NEWS.in -e 1s,@VERSION[@],$( cat ./VERSION ), > NEWS")		
 				(invoke "sh" "-c" "autoreconf -vif"))))))
