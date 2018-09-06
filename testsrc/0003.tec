@@ -1,0 +1,29 @@
+!+ 20180906,gl 0003.t, tests for TECO!
+
+@^u1%
+[a 0,0xa
+! The EZ significance of its bits !
+@^ua_unused_ [a
+@^ua_unused_ [a
+@^ua_do not show CR in scroll mode_ [a
+@^ua_unused_ [a
+
+@^ua_EOF display for CURSES_ [a
+@^ua_(unused)_[a
+@^ua_(unused)_ [a
+@^ua_\n only line ending_ [a
+
+@^ua_TECO FF handing_ [a
+@^ua_(unused)_ [a
+@^ua_split screen line on 7:w_ [a
+@^ua_audio, video CURSES_ [a
+
+@^ua_?CURSES?_ [a
+@^ua_(unused)_ [a
+@^ua_(unused)_ [a
+@^ua_no VAX style file versioning_ [a
+
+!+ Show the EZ bits that are set !
+1u3 16<]a ez&q3"g ( q3:=   :ga )
+' q3*2u3>
+]a % m1 ex

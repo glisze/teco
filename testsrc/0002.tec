@@ -1,0 +1,28 @@
+!+ 20180906,gl 0002.tec, clpars.tes, Q1 bits !
+
+@^u1%
+! The EZ significance of its bits !
+@^ua_???_ [a
+@^ua_input file is in edit buffer_ [a
+@^ua_force setting of filespec memory_ [a
+@^ua_no init_ [a
+
+@^ua_input file is open_ [a
+@^ua_(unused)_[a
+@^ua_(unused)_ [a
+@^ua_- no create_ [a
+
+@^ua_- scroll_ [a
+@^ua_- no page_ [a
+@^ua_- hold_ [a
+@^ua_- see all_ [a
+
+@^ua_- find_ [a
+@^ua_- no memory_ [a
+@^ua_- inspect_ [a
+@^ua_- vt edit_ [a
+
+!+ Show the Q1 bits that are set !
+1u3 16<]a q1&q3"g ( q3:=   :ga )
+' q3*2u3>
+% m1 
