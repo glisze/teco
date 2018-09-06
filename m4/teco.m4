@@ -9,8 +9,8 @@ dnl Change with --with-tecomoduledir=somewhere
 AC_DEFUN([TECO_MODULEDIR],
 [AC_ARG_WITH([tecomoduledir],
   [AS_HELP_STRING([--with-tecomoduledir],
-    [Teco modules installation directory @<:@]'${libdir}/teco'[@:>@])],,
-    [with_tecomoduledir=]'${libdir}/teco')
+    [Teco modules installation directory @<:@]'$1'[@:>@])],,
+    [with_tecomoduledir=]'$1')
 AC_SUBST([tecomoduledir], [$with_tecomoduledir])
 ])dnl TECO_MODULEDIR
 
@@ -21,7 +21,7 @@ dnl Change with --with-tecoobjectdir=somewhere
 AC_DEFUN([TECO_OBJECTDIR],
 [AC_ARG_WITH([tecoobjectdir],
   [AS_HELP_STRING([--with-tecoobjectdir],
-    [Teco objects installation directory @<:@]'${datarootdir}/teco'[@:>@])],,
-    [with_tecoobjectdir=]'${datarootdir}/teco')
+    [Teco objects installation directory @<:@]'$1'[@:>@])],,
+    [with_tecoobjectdir=]'$1')
 AC_SUBST([tecoobjectdir], [$with_tecoobjectdir])
 ])dnl TECO_OBJECTDIR
