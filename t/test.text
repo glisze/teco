@@ -1,0 +1,6 @@
+* Test a/init0.tes
+Has this file the expected endings
+#+BEGIN_SRC text
+cat -n -A test.text
+#+END_SRC
+Yes, this is org mode. Its appearance is questioned, also.
