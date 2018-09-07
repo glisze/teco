@@ -1,7 +1,7 @@
 #!/usr/bin/env expect
 puts "1..1\n"
 set t 1
-spawn ./tecoc
+spawn t/tecoc
 expect "*\*"
 send "\027\027"
 expect "*\*" { puts "ok $t\n"; exit 0}

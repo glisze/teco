@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+t/tecoc
+*.bak
+t/tecoc
+t/tecoc-dir
