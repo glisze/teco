@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+SOURCE="tecoc-0.0.73-6474"
+TARBALL="${SOURCE}.tar.xz"
+DOWNLOAD="https://github.com/glisze/teco/releases/download/staging%2Fv0.0.73-6474/${TARBALL}"
 echo -n "1"
 echo -n "..11"
 echo -n " todo "
@@ -8,9 +11,9 @@ rm t/tecoc || true
 rm t/tecoc-dir || true
 ln -sv $( guix build -L ./packages -K --verbosity=0 teco ) t/tecoc-dir && echo "ok 1" || echo "not ok 1"
 ln -sv $( readlink -e t/tecoc-dir/bin/tecoc ) t/tecoc && echo "ok 2" || echo "not ok 2"
-wget https://github.com/glisze/teco/releases/download/staging%2Fv0.0.73-6474/tecoc-v0.0.73-6474.tar.xz && echo "ok 3" || echo "not ok 3"
-tar xf tecoc-v0.0.73-6474.tar.xz && echo "ok 4" || echo "not ok 4"
-pushd tecoc-v0.0.73-6474 && echo "ok 5" || echo "not ok 5"
+wget ${DOWNLOAD} && echo "ok 3" || echo "not ok 3"
+tar xf ${TARBALL} && echo "ok 4" || echo "not ok 4"
+pushd ${SOURCE} && echo "ok 5" || echo "not ok 5"
 ./bootstrap && echo "ok 6" || echo "not ok 6"
 ./configure && echo "ok 7" || echo "not ok 7"
 ./make V=0 && echo "ok 8" || echo "not ok 8"
