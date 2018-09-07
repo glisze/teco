@@ -2,5 +2,5 @@ language: c
 sudo: false
 install: true
 script:
-- ./t/0000-who-is-this
+- sh ./t/0000-who-is-this
 - prove -v
