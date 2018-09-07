@@ -5,7 +5,7 @@ DOWNLOAD="https://github.com/glisze/teco/releases/download/staging%2Fv0.0.73-647
 echo -n "1"
 echo -n "..11"
 echo -n " todo "
-echo -n "1 2"
+echo -n "1 2 6"
 echo -n "\n"
 rm t/tecoc || true
 rm t/tecoc-dir || true
@@ -16,7 +16,7 @@ tar xf ${TARBALL} && echo "ok 4" || echo "not ok 4"
 pushd ${SOURCE} && echo "ok 5" || echo "not ok 5"
 ./bootstrap && echo "ok 6" || echo "not ok 6"
 ./configure && echo "ok 7" || echo "not ok 7"
-./make V=0 && echo "ok 8" || echo "not ok 8"
+make V=0 && echo "ok 8" || echo "not ok 8"
 ln -sv $( pwd )/ ../t/tecoc-dir && echo "ok 9" || echo "not ok 9"
 popd && echo "ok 10" || echo "not ok 10"
 ln -sv src/tecoc t/tecoc && echo "ok 11" || echo "not ok 11"
