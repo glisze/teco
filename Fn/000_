@@ -1,0 +1,5 @@
+000_ () 
+{ 
+    local D="Create the folder 'Fn' for the purpose of keeping a record of functions.";
+    mkdir Fn
+}

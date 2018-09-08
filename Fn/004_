@@ -1,0 +1,10 @@
+004_ () 
+{ 
+    local D="Show the shell functions' descriptions and declarations.";
+    for x in Fn/*;
+    do
+        local y=$( basename $x );
+        echo "$( declare -F $y ) -- $( sed ${x} -n -e '/^[ ]*local D=/s,,,p' )";
+        declare -f $y;
+    done
+}
