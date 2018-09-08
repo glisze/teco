@@ -7,9 +7,9 @@ Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 7)
 Vcs-Bzr: lp:glisze/teco
 Homepage: https://glisze.github.com/teco
-
 Package: teco
+Version: 0.0.73
 Architecture: any
-Depends: $(shlibs:Depends)
+Depends: 
 Description: Text Editor and COrrector Program
   This is it...
