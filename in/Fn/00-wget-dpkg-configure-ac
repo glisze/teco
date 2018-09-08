@@ -1,0 +1,5 @@
+00-wget-dpkg-configure-ac () 
+{ 
+    ( D="configue.ac: for example, a dpgk target" );
+    wget https://github.com/ptomato/gnome-inform7/raw/master/configure.ac
+}

@@ -1,0 +1,5 @@
+00-wget-rules () 
+{ 
+    ( D="rules: dh dpkg maker" );
+    wget https://github.com/ptomato/gnome-inform7/raw/master/debian/rules
+}

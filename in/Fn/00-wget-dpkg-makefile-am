@@ -1,0 +1,5 @@
+00-wget-dpkg-makefile-am () 
+{ 
+    ( D="Makefile.am: for example, a dpkg" );
+    wget https://github.com/ptomato/gnome-inform7/raw/master/Makefile.am
+}

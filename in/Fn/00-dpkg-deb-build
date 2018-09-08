@@ -1,0 +1,5 @@
+00-dpkg-deb-build () 
+{ 
+    ( D="dpkg-deb --build tecoc-build-dir" );
+    dpkg-deb --build tecoc-dist-dir
+}
