@@ -1,0 +1,5 @@
+00-changelog () 
+{ 
+    ( D="debian/changelog: our specifics" );
+    sed debian.in/changelog.in -e s,@PACKAGE[@],teco, -e s,@VERSION[@],$( scripts/git-version-gen VERSION --prefix release\\/v ), -e s,@RELEASE[@],trusty, -e 's/@DATE[@]/Sat, 08 Sep 2018 11:10:53 +0100/'
+}
