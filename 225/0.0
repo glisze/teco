@@ -20,10 +20,10 @@ Given a teco program, once upon a time called macro in <tt>0.tes</tt>
 cat 0.tes # gives
 
 256,1ez
-erindex.html.in
-ew0.0
+erindex.html.in&lt;ESC&gt;
+ew0.0&lt;ESC&gt;
 yhx0hk ! :g0 to see out template !
-g0 0j s<h1> l ! i to insert things here !
+g0 0j s&lt;h1&gt;&lt;ESC&gt; l ! i to insert things here !
 
 ! ex to finish !
 ]]></pre>
@@ -45,16 +45,16 @@ symbol.
 <a href="225/index.html.in"><tt>225/index.html.in</tt></a>
 </p>
 
-<pre><[CDATA[
+<pre><![CDATA[
 
-<html>
-<head><title>TECO</title></head>
-<body><h1>TECO</h1>
-<address>
+&lt;html&gt;
+&gt;head&gt;&lt;title&gt;TECO&gt;/title&gt;&lt;/head&gt;
+&gt;body&gt;&lt;h1&gt;TECO&gt;/h1&gt;
+&lt;address&gt;
 (C) 2018 the author.
-</address>
-</body>
-</html>
+&gt;/address&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 ]]></pre>
 <address>
