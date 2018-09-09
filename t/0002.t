@@ -22,5 +22,5 @@ popd && echo "ok 10" || echo "not ok 10"
 ln -sv src/tecoc t/tecoc && echo "ok 11" || echo "not ok 11"
 mkdir -p dist/${PACKAGE}-${VERSION}/DEBIAN || true
 make V=0 DESTDIR="$( pwd )/dist/${PACKAGE}-${VERSION}" install && echo "ok 12" || echo "not ok 12"
-cp -rv debian/ ${DESTDIR}/DEBIAN && echo "ok 13" || echo "not ok 13"
+cp -rv debian/ dist/${PACKAGE}-${VERSION}/DEBIAN && echo "ok 13" || echo "not ok 13"
 dpkg-deb --build ${DESTDIR} && echo "ok 14" || echo "not ok 14"
