@@ -16,7 +16,7 @@ Given a teco program, once upon a time called macro in <tt>0.tes</tt>
 </p>
 <p>Let's see:
 
-<pre><![CDATA[
+<pre><[!CDATA[
 cat 0.tes # gives
 
 256,1ez
@@ -45,7 +45,7 @@ symbol.
 <a href="225/index.html.in"><tt>225/index.html.in</tt></a>
 </p>
 
-<pre><![CDATA[
+<pre><[!CDATA[
 
 &lt;html&gt;
 &gt;head&gt;&lt;title&gt;TECO&gt;/title&gt;&lt;/head&gt;
