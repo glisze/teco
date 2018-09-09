@@ -23,4 +23,9 @@ ln -sv src/tecoc t/tecoc && echo "ok 11" || echo "not ok 11"
 mkdir -p dist/${PACKAGE}-${VERSION}/DEBIAN || true
 make V=0 DESTDIR="$( pwd )/dist/${PACKAGE}-${VERSION}" install && echo "ok 12" || echo "not ok 12"
 cp -rv debian/* dist/${PACKAGE}-${VERSION}/DEBIAN/ && echo "ok 13" || echo "not ok 13"
-dpkg-deb --build ${DESTDIR} && echo "ok 14" || echo "not ok 14"
+dpkg-deb --build dist/${PACKAGE}-${VERSION} && echo "ok 14" || echo "not ok 14"
+pwd || true
+ls -l || true
+ls -l dist || true
+set || true
+find dist/ || true
