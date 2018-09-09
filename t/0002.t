@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-SOURCE="tecoc-0.0.73-6474"
+VERSION="0.0.73-6474"
+PACKAGE="teco"
+SOURCE="tecoc-${VERSION}"
 TARBALL="${SOURCE}.tar.xz"
 DOWNLOAD="https://github.com/glisze/teco/releases/download/staging%2Fv0.0.73-6474/${TARBALL}"
 echo -n "1"
@@ -18,6 +20,7 @@ make V=0 && echo "ok 8" || echo "not ok 8"
 ln -sv $( pwd )/ ../t/tecoc-dir && echo "ok 9" || echo "not ok 9"
 popd && echo "ok 10" || echo "not ok 10"
 ln -sv src/tecoc t/tecoc && echo "ok 11" || echo "not ok 11"
-make V=0 DESTDIR=$( pwd )/dist/ && echo "ok 12" || echo "not ok 12"
-cp -rv debian/ ${DESTDIR}/debian && echo "ok 13" || echo "not ok 13"
+mkdir -p dist/${PACKAGE}-${VERSION}/DEBIAN || true
+make V=0 DESTDIR="$( pwd )/dist/${PACKAGE}-${VERSION}" && echo "ok 12" || echo "not ok 12"
+cp -rv debian/ ${DESTDIR}/DEBIAN && echo "ok 13" || echo "not ok 13"
 dpkg-deb --build ${DESTDIR} && echo "ok 14" || echo "not ok 14"
