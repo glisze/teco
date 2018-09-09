@@ -1,0 +1,5 @@
+00-wget-control-example () 
+{ 
+    ( D="control: what makes this a debian type package" );
+    wget https://git.launchpad.net/~videolan/vlc/+git/packaging/plain/debian/control
+}
