@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 7)
 Vcs-Bzr: lp:glisze/teco
 Homepage: https://glisze.github.io/teco
 Package: teco
-Architecture: any
+Architecture: amd64
 Depends: ncurses
 Description: Text Editor and COrrector Program
   This is it...
