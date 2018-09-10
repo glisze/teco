@@ -12,7 +12,7 @@ pushd ${SOURCE} && echo "ok 3" || echo "not ok 3"
 make V=0 && echo "ok 5" || echo "not ok 5"
 mkdir -p dist/${PACKAGE}-${VERSION}/DEBIAN && echo "ok 6" || echo "not ok 6"
 make V=0 DESTDIR="$( pwd )/dist/${PACKAGE}-${VERSION}" install && echo "ok 7" || echo "not ok 7"
-cp -rv ../debian/* dist/${PACKAGE}-${VERSION}/DEBIAN/ && echo "ok 8" || echo "not ok 8"
+cp -rv ../DEBIAN/* dist/${PACKAGE}-${VERSION}/DEBIAN/ && echo "ok 8" || echo "not ok 8"
 dpkg-deb --build dist/${PACKAGE}-${VERSION} && echo "ok 9" || echo "not ok 9"
 pwd || true
 ls -l || true
