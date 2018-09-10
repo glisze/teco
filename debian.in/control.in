@@ -1,12 +1,12 @@
 Source: @PACKAGE@
 Section: @SECTION@
 Priority: optional
-Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
-XSBC-Original-Maintainer: Gunter Liszewsk<gunter.liszewski@gmail.com>
+Maintainer: Gunter Liszewski <gunter.liszewski@gmail.io>
+XSBC-Original-Maintainer: Gunter Liszewsk<gunter.liszewski@gmail.io>
 Standards-Version: @STANDARDS_VERSION@
 Build-Depends: @BUILD_DEPENDS@
 Vcs-Bzr: lp:glisze/teco
-Homepage: https://glisze.github.com/teco
+Homepage: https://glisze.github.io/teco
 
 Package: @BIN_PACKAGE@
 Architecture: any
