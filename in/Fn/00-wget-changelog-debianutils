@@ -1,0 +1,5 @@
+00-wget-changelog-debianutils () 
+{ 
+    ( D="changelog: for example package changelog for debianutils" );
+    wget 'https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/saucy/debianutils/saucy/download/head:/changelog-20090703070832-2j9d2o6amlwb79uw-4/changelog'
+}

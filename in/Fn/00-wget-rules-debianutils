@@ -1,0 +1,5 @@
+00-wget-rules-debianutils () 
+{ 
+    ( D="rules: for example some explicit make rules for debianutils" );
+    wget 'https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/saucy/debianutils/saucy/download/head:/rules-20090703070832-2j9d2o6amlwb79uw-10/rules'
+}
