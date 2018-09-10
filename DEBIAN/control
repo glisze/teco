@@ -10,6 +10,6 @@ Vcs-Bzr: lp:glisze/teco
 Homepage: https://glisze.github.io/teco
 Package: teco
 Architecture: amd64
-Depends: libncurses5-dev libncursesw5-dev
+Depends: ncurses
 Description: Text Editor and COrrector Program
   This is it...
