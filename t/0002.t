@@ -20,4 +20,4 @@ ls -l dist || true
 set || true
 find dist/ || true
 popd && echo "ok 10" || echo "not ok 10"
-mv -v ${SOURCE}/dist/${PACKAGE}-${VERSION}/dist/${PACKAGE}-${VERSION} . && echo "ok 11" || echo "not ok 11"
+mv -v ${SOURCE}/dist/${PACKAGE}-${VERSION}.deb . && echo "ok 11" || echo "not ok 11"
