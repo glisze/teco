@@ -1,5 +1,5 @@
 language: c
-sudo: false
+sudo: required
 install: true
 addons:
   apt:
@@ -7,4 +7,4 @@ addons:
     - expect
 script:
 - sh ./t/0000-who-is-this
-- prove -v
+- prove
