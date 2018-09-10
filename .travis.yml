@@ -5,7 +5,8 @@ addons:
   apt:
     packages:
     - expect
-    - ncurses
+    - libncurses5-dev
+    - libncursesw5-dev
 script:
 - sh ./t/0000-who-is-this
 - prove
