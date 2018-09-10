@@ -5,7 +5,7 @@ SOURCE="tecoc-${VERSION}"
 TARBALL="${SOURCE}.tar.xz"
 DOWNLOAD="https://github.com/glisze/teco/releases/download/staging%2Fv0.0.73-6474/${TARBALL}"
 echo "1..2"
-dpkg --install ${PACKAGE}-${VERSION} && echo "ok 1" || echo "not ok 1"
+sudo dpkg --install ${PACKAGE}-${VERSION} && echo "ok 1" || echo "not ok 1"
 pwd || true
 ls -l || true
 which tecoc && echo "ok 2" || echo "not ok 2"
