@@ -4,7 +4,7 @@ PACKAGE="teco"
 SOURCE="tecoc-${VERSION}"
 TARBALL="${SOURCE}.tar.xz"
 DOWNLOAD="https://github.com/glisze/teco/releases/download/staging%2Fv0.0.73-6474/${TARBALL}"
-echo "1..10"
+echo "1..11"
 wget -q ${DOWNLOAD} && echo "ok 1" || echo "not ok 1"
 tar xf ${TARBALL} && echo "ok 2" || echo "not ok 2"
 pushd ${SOURCE} && echo "ok 3" || echo "not ok 3"
@@ -20,3 +20,4 @@ ls -l dist || true
 set || true
 find dist/ || true
 popd && echo "ok 10" || echo "not ok 10"
+mv -v ${SOURCE}/dist/${PACKAGE}-${VERSION}/dist/${PACKAGE}-${VERSION} . && echo "ok 11" || echo "not ok 11"
