@@ -1,5 +1,5 @@
 #!/usr/bin/env expect
-puts "1..1 todo 1\n"
+puts "1..1\n"
 set t 1
 spawn tecoc
 expect "*\*"
