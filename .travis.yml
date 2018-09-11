@@ -1,0 +1,13 @@
+language: c
+sudo: false
+install: true
+addons:
+  apt:
+    packages:
+    - expect
+    - libncurses5-dev
+    - libncursesw5-dev
+script:
+- sh ./t/0000-who-is-this
+- . t/0000.0 && t/0001.0 && t/0002.0 && t/0002.0 install
+- prove

@@ -1,0 +1,48 @@
+#!/usr/bin/make -f
+
+all: tests
+
+tests: 4
+	@echo "1..$<"
+
+this: 
+	@echo "Hello, World"
+
+that:
+	$(checkroot)
+	@echo "checkroot"
+
+these: 0
+	@echo "P=$(PACKAGE) V=$(VERSION) S=$(SOURCE)"
+
+1: plan
+	@echo "ok $@"
+
+2: 1
+	wget --no-check-certificate "$(DOWNLOAD)"
+	tar xf "$(TARBALL)"
+	cd $(SOURCE)
+	@echo "ok $@"
+
+3: 2
+	cd $(SOURCE)
+	pwd
+	./configure
+	@echo "ok $@"
+
+4: 3
+	cd $(SOURCE)
+	make
+	@echo "ok $@"
+
+0:
+	@. t/PACKAGE.sh
+	$(shell . t/VERSION.sh)
+	$(shell . t/SOURCE.sh)
+	$(shell . t/TAR_SUFFIX.sh)
+	$(shell . t/TARBALL.sh)
+	$(shell . t/URL_PREFIX.sh)
+	$(shell . t/DOWNLOAD.sh)
+
+plan:
+	@echo "1..1"

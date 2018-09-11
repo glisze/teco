@@ -1,0 +1,2 @@
+#!/usr/bin/env expect
+puts "Hello, World \"$argv0\""

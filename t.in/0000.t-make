@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+
+this: 
+	@echo "Hello, World"
+
+that:
+	$(checkroot)
+	@echo "checkroot"

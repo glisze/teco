@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+all: $(SOURCE)/src/tecoc
+
+this: 
+	@echo "Hello, World"
+
+that:
+	$(checkroot)
+	@echo "checkroot"
+
+install: $(SOURCE)/src/tecoc
+	cd $(SOURCE) && \
+	make V=0 install
+
+$(SOURCE)/src/tecoc: $(SOURCE)/Makefile
+	cd $(SOURCE) && \
+	make V=0
+
+$(SOURCE)/Makefile: $(SOURCE)
+	cd $(SOURCE) && \
+	./configure
+
