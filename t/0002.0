@@ -19,5 +19,5 @@ $(SOURCE)/src/tecoc: $(SOURCE)/Makefile
 
 $(SOURCE)/Makefile: $(SOURCE)
 	cd $(SOURCE) && \
-	./configure --prefix=~/a/
+	./configure --prefix=$(HOME)/a/
 
