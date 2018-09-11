@@ -8,6 +8,7 @@ addons:
     - libncurses5-dev
     - libncursesw5-dev
 script:
+- export PREFIX=~/a; mkdir ~/a; export PATH=~/a:$PATH
 - sh ./t/0000-who-is-this
 - . t/0000.1 && . t/0000.0 && t/0001.0 && t/0002.0 && t/0002.0 install
 - prove
