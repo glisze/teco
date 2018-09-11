@@ -1,0 +1,12 @@
+language: c
+sudo: false
+install: true
+addons:
+  apt:
+    packages:
+    - libncurses5-dev
+    - libncursesw5-dev
+script:
+- ./t/0001-who-is-this
+- ./bootstrap && ./configure --enable-silent-rules && make
+- make -s distcheck && make -s distclean

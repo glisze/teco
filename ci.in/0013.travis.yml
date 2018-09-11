@@ -1,26 +1,15 @@
 language: c
 sudo: false
+install: true
 addons:
   apt:
     packages:
     - expect
     - libncurses5-dev
     - libncursesw5-dev
-cache:
-before_install:
-install: true
-before_script:
 script:
 - export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
 - sh ./t/0000-who-is-this
 - . t/0000.1 && . t/0000.0 && t/0001.0 && t/0002.0 && t/0002.0 install
 - ls -lR ~/a
 - prove
-after_script:
-before_cache:
-after_success:
-after_failure:
-before_deploy:
-deploy:
-after_deploy:
-after_script:
