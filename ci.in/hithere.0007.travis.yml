@@ -1,0 +1,22 @@
+language: c
+
+sudo: false
+
+before_install:
+  - sudo add-apt-repository -y ppa:dank/guile-2.2
+  - sudo apt-get update -y
+  - sudo apt-get install -y -V guile-2.2\*
+  - sudo apt-get install -y -V texinfo
+
+install: true
+
+script:
+     - guile --version
+     - ./scripts/this-version
+     - touch ChangeLog && touch NEWS
+     - ./bootstrap && ./configure && make -s
+     - src/hithere
+     - cd src && prove && cd ..
+
+notifications:
+     email: gunter.liszewski@gmail.com
