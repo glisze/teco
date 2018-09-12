@@ -10,17 +10,23 @@ cache:
 before_install:
 install: true
 before_script:
-script:
 - export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
-- sh ./t/0000-who-is-this
-- . t/0000.1 && . t/0000.0 && t/0001.0 && t/0002.0 && t/0002.0 install
+- . 225/0000.1 && . 225/0000.0 && 225/0001.0 && 225/0002.0 && 225/0002.0 install
 - ls -lR ~/a
+script:
+- sh ./t/0000-who-is-this
 - prove
 after_script:
 before_cache:
 after_success:
+- echo "Success, this is glisze/teco"
+- echo "============================"
 after_failure:
+- echo "Enter the failure"
+- echo "================="
 before_deploy:
+- echo "Enter the deploy"
+- echo "==============="
 deploy:
 after_deploy:
 after_script:
