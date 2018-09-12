@@ -20,7 +20,7 @@ before_script:
 - 193/0004.t
 script:
 - sh ./t/0000-who-is-this
-- prove
+- prove -v
 after_script:
 before_cache:
 after_success:
