@@ -3,22 +3,21 @@ sudo: false
 addons:
   apt:
     sources:
+    - ppa:dank/guile-2.2
     packages:
     - expect
     - libncurses5-dev
     - libncursesw5-dev
+    - guile-2.2
 cache:
 before_install:
-- sudo add-apt-repository -y ppa:dank/guile-2.2
-- sudo apt-get update -y
-- sudo apt-get install -y -V guile-2.2\*
-- sudo apt-get install -y -V texinfo
 install: true
 before_script:
 - export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
 - . 225/0000.1 && . 225/0000.0 && 225/0001.0 && 225/0002.0 && 225/0002.0 install
 - ls -lR ~/a
 - guile --version
+- 193/0004.t
 script:
 - sh ./t/0000-who-is-this
 - prove
