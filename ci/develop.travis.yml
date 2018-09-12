@@ -2,6 +2,7 @@ language: c
 sudo: false
 addons:
   apt:
+    sources:
     packages:
     - expect
     - libncurses5-dev
@@ -19,14 +20,11 @@ script:
 after_script:
 before_cache:
 after_success:
-- echo "Success, this is glisze/teco"
-- echo "============================"
+- echo "=== Success, this is teco ==="
 after_failure:
-- echo "Enter the failure"
-- echo "================="
+- echo "=== Enter the failure ==="
 before_deploy:
-- echo "Enter the deploy"
-- echo "==============="
+- echo "=== Enter the deploy ==="
 deploy:
 after_deploy:
 after_script:
