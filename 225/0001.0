@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+all: $(SOURCE)
+
+this: 
+	@echo "Hello, World"
+
+that:
+	$(checkroot)
+	@echo "checkroot"
+
+$(SOURCE): $(TARBALL)
+	tar xf $(TARBALL)
+
+$(TARBALL):
+	wget $(WGET_OPTIONS) $(DOWNLOAD)
+
+clean:
+	-rm $(TARBALL)
+	-rm -rf $(SOURCE)
