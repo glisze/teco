@@ -15,13 +15,11 @@ before_install:
 install: true
 before_script:
 - export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
-- . 225/0000.1 && . 225/0000.0 && 225/0001.0 && 225/0002.0 && 225/0002.0 install
-- ls -lR ~/a
-- guile --version
-- 193/0004.t
+- . 225/0000.1 && . 225/0000.0 && 225/0001.0
+- ls -lR ./ && pwd
 script:
 - sh ./t/0000-who-is-this
-- prove -v
+- prove t/000{2,3,4}.t
 after_script:
 before_cache:
 after_success:
