@@ -11,10 +11,10 @@ proc a {a b} {
   incr t
   send "$a"
     expect {
-      "$b*\r" {
+      -re "$b\$" {
          send "\r"
          expect {
-           "*\$ " { puts "ok $t"}
+           "*\r " { puts "ok $t"}
            default { puts "not ok $t"}
          }
       }
@@ -24,7 +24,7 @@ proc a {a b} {
 p {1..5} {}
 spawn bash
 a "\r" "*\$ "
-a "guile --version|head -1\r" "*Guile*"
-a "git --version|head -1\r" "*git version*"
-a "ld --version|head -1\r" "*Binutils*"
-a "gcc --version|head -1\r" "*gcc*"
+a "guile --version|head -1\r" ".*Guile.*"
+a "git --version|head -1\r" ".*git version.*"
+a "ld --version|head -1\r" ".*Binutils.*"
+a "gcc --version|head -1\r" ".*gcc.*"
