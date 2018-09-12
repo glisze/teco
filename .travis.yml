@@ -3,7 +3,7 @@ sudo: false
 addons:
   apt:
     sources:
-    - ppa:dank/guile-2.2
+    - sourceline: 'ppa:dank/guile-2.2'
     packages:
     - expect
     - libncurses5-dev
