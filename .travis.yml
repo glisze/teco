@@ -10,6 +10,7 @@ addons:
     - libncursesw5-dev
     - guile-2.2
     - debhelper
+    - dh-make
 cache:
 before_install:
 install: true
