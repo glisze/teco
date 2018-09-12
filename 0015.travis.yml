@@ -9,7 +9,6 @@ addons:
     - libncurses5-dev
     - libncursesw5-dev
     - guile-2.2
-    - debhelper
 cache:
 before_install:
 install: true
