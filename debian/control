@@ -1,5 +1,6 @@
-Source: tecoc-0.0.73
-Section: unknown
+Source: teco
+Version: 0.0.73
+Section: develop
 Priority: optional
 Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
 Build-Depends: debhelper (>= 10), autotools-dev
@@ -8,7 +9,7 @@ Homepage: https://glisze.github.io/teco
 Vcs-Git: lp:glisze/teco
 Vcs-Browser: https://github.com/glisze/teco
 
-Package: tecoc-0.0.73
+Package: teco
 Architecture: all
 Depends: ${misc:Depends}
 Description: Text Editor and COrrector Program
