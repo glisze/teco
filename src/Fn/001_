@@ -1,0 +1,8 @@
+001_ () 
+{ 
+    local D="Touch the records of the shell function here, in Fn/.";
+    for x in $( seq -w 0 099 ) $( seq -w 0 99 ) $( seq 0 9 );
+    do
+        test $( declare -F ${x}_ ) && touch Fn/${x}_;
+    done
+}

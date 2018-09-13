@@ -1,0 +1,11 @@
+00-make-tee () 
+{ 
+    ( D="make, and see" );
+    local a=$( date +%Y%m%d%H%M%S );
+    00-make-linux 2>&1 | tee @/0/$a;
+    pushd @/0;
+    ln -svf $( readlink 1 ) 2;
+    ln -svf $( readlink 0 ) 1;
+    ln -svf $a 0;
+    popd
+}

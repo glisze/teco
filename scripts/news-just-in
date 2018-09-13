@@ -1,0 +1,1 @@
+sed NEWS.in -e s,@VERSION[@],$( scripts/git-version-gen VERSION --prefix release\\/v ),g >NEWS

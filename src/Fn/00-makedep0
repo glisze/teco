@@ -1,0 +1,10 @@
+00-makedep0 () 
+{ 
+    ( D="Post make depend, fix the new Makefile-linux" );
+    ./genclp;
+    make -f Makefile-linux makedep;
+    sed makedep5 -e 's, \\$,,' -i;
+    sed Makefile-linux -e '157,$d' > Makefile-linux.new;
+    cat Makefile-linux.new makedep5 > Makefile-linux.n;
+    mv Makefile-linux{.n,}
+}

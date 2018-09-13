@@ -1,0 +1,6 @@
+this-package () 
+{ 
+    ( D="define this package" );
+    git-fetch $PACKAGE $PREFIX $VERSION;
+    package-concrete > packages/here/teco.scm
+}

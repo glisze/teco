@@ -1,0 +1,6 @@
+tag-to-deploy () 
+{ 
+    ( D="git tag staging/v or release/v...";
+    PREFIX=$1;
+    git tag $PREFIX$( scripts/git-version-gen VERSION --prefix release\\/v | sed - -e s,-dirty,, ) )
+}

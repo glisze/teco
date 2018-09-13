@@ -1,0 +1,5 @@
+00-tag-to-release () 
+{ 
+    ( D="git tag deploy/v... for releases" );
+    git tag "deploy/v$( scripts/git-version-gen VERSION --prefix release\\/v )"
+}

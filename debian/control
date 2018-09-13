@@ -1,15 +1,15 @@
 Source: tecoc-0.0.73
 Section: unknown
 Priority: optional
-Maintainer: unknown <gunter@unknown>
+Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
 Build-Depends: debhelper (>= 10), autotools-dev
 Standards-Version: 4.1.2
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: https://anonscm.debian.org/git/collab-maint/tecoc-0.0.73.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/tecoc-0.0.73.git
+Homepage: https://glisze.github.io/teco
+Vcs-Git: lp:glisze/teco
+Vcs-Browser: https://github.com/glisze/teco
 
 Package: tecoc-0.0.73
 Architecture: all
 Depends: ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Text Editor and COrrector Program
+  This is it...

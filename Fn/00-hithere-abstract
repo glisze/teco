@@ -1,0 +1,5 @@
+00-hithere-abstract () 
+{ 
+    ( D="Parameterisation thereof" );
+    sed guix/tecoc.scm.in -e s,hithere,@PACKAGE_NAME@, -e s,0.0-alpha,@VERSION@, -e s,release/v0.0,@COMMIT@, -e s,0j9r\.\*575,@SHA256@, -e s,https:\.\*\.git,@URL@, -e s,https\.\*there,@HOME@, -e s,@disttag@,@VERSION@, "$@"
+}
