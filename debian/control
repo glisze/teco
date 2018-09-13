@@ -1,15 +1,15 @@
-Source: teco
-Section: devel
+Source: tecoc-0.0.73
+Section: unknown
 Priority: optional
-Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
-XSBC-Original-Maintainer: Gunter Liszewsk<gunter.liszewski@gmail.com>
-Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 7)
-Vcs-Bzr: lp:glisze/teco
-Homepage: https://glisze.github.com/teco
+Maintainer: unknown <gunter@unknown>
+Build-Depends: debhelper (>= 10), autotools-dev
+Standards-Version: 4.1.2
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/tecoc-0.0.73.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/tecoc-0.0.73.git
 
-Package: teco
-Architecture: any
-Depends: $(shlibs:Depends)
-Description: Text Editor and COrrector Program
-  This is it...
+Package: tecoc-0.0.73
+Architecture: all
+Depends: ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
