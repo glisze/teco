@@ -30,6 +30,7 @@ after_success:
 - cp -R debian/ ${SOURCE}
 - cd ${SOURCE} && fakeroot dh binary && cd ..
 - ls -lh
+- dpkg-deb -c tecoc*.deb
 after_failure:
 - echo "=== Enter the failure ==="
 before_deploy:
