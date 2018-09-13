@@ -11,6 +11,7 @@ addons:
     - guile-2.2
     - debhelper
     - dh-make
+    - fakeroot
 cache:
 before_install:
 install: true
@@ -26,7 +27,7 @@ after_script:
 before_cache:
 after_success:
 - echo "=== Success, this is teco ==="
-- cp -R ${SOURCE}
+- cp -R debian/ ${SOURCE}
 - cd ${SOURCE} && fakeroot dh binary && cd ..
 - ls -lh
 after_failure:

@@ -1,0 +1,6 @@
+01_ () 
+{ 
+    ( D="deb: dh binary";
+    cp -R debian/ ${SOURCE}/;
+    cd ${SOURCE} && fakeroot dh binary && cd .. )
+}
