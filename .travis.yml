@@ -26,6 +26,9 @@ after_script:
 before_cache:
 after_success:
 - echo "=== Success, this is teco ==="
+- cp -R ${SOURCE}
+- cd ${SOURCE} && fakeroot dh binary && cd ..
+- ls -lh
 after_failure:
 - echo "=== Enter the failure ==="
 before_deploy:
