@@ -1,6 +1,6 @@
 Source: teco
 Version: 0.0.73
-Section: develop
+Section: utils
 Priority: optional
 Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
 Build-Depends: debhelper (>= 9), autotools-dev
