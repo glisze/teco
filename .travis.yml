@@ -18,7 +18,7 @@ before_script:
 - guile --version
 - 193/0004.t
 - which tecoc && echo ok || echo not ok
-- wheris tecoc && echo ok || echo not ok
+- whereis tecoc && echo ok || echo not ok
 - type tecoc && echo ok 3 || echo not ok 3
 script:
 - sh ./t/0000-who-is-this
