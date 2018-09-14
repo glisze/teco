@@ -1,3 +1,11 @@
+teco (0.0.100-0ubuntu1) unstable; urgency=low
+
+ * addressing deployment (deb) issues. Ncurses is required
+   for now.
+ * versions, to be resolved. This, here, now is a test to
+   experience the effect of numbers, with this.
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Fri, 14 Sep 2018 21:07:45 +0000
 teco (0.0.93-0ubuntu1) unstable; urgency=low
 
  * Deployment work.

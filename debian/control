@@ -3,7 +3,7 @@ Version: 0.0.73
 Section: devel
 Priority: optional
 Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
-Build-Depends: debhelper (>= 9), autotools-dev
+Build-Depends: debhelper (>= 9), autotools-dev, libncurses-dev
 Standards-Version: 4.1.2
 Homepage: https://glisze.github.io/teco
 Vcs-Git: lp:glisze/teco
@@ -22,3 +22,6 @@ Description: Text Editor and COrrector Program
   Also, please note that only the amd64 binary has been
   verified to run. Other architecures are here to facilitate
   their testing only.
+  For now it depends on ncurses, pending to be fixed
+  with autotools. The static linking is of a similar
+  and related issue (guix issue, may have been fixd elsewhere)
