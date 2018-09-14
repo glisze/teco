@@ -1,6 +1,6 @@
 Source: teco
 Version: 0.0.73
-Section: utils
+Section: devel
 Priority: optional
 Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
 Build-Depends: debhelper (>= 9), autotools-dev
@@ -14,3 +14,8 @@ Architecture: amd64
 Depends: ${misc:Depends}
 Description: Text Editor and COrrector Program
   This is it...
+  Yes, I am typing this using this capable editor.
+  The following teco command (omit the prompt '* '),
+  * 256,1ez
+  works around the default, and on linux incorrect
+  end-of-line sequence.
