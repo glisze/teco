@@ -15,7 +15,6 @@ cache:
 before_install:
 install: true
 before_script:
-- ls -lR ~/a
 - guile --version
 - 193/0004.t
 - which tecoc && echo ok || echo not ok
