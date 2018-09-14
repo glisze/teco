@@ -4,20 +4,23 @@ addons:
   apt:
     sources:
     - sourceline: 'ppa:dank/guile-2.2'
+    - sourceline: 'ppa:glisze/ppa0'
     packages:
     - expect
     - libncurses5-dev
     - libncursesw5-dev
     - guile-2.2
+    - teco
 cache:
 before_install:
 install: true
 before_script:
-- export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
-- . 225/0000.1 && . 225/0000.0 && 225/0001.0 && 225/0002.0 && 225/0002.0 install
 - ls -lR ~/a
 - guile --version
 - 193/0004.t
+- which tecoc && echo ok || echo not ok
+- wheris tecoc && echo ok || echo not ok
+- type tecoc && echo ok 3 || echo not ok 3
 script:
 - sh ./t/0000-who-is-this
 - prove -v
