@@ -1,5 +1,5 @@
 Source: teco
-Version: 0.0.73
+Version: 0.0.100
 Section: devel
 Priority: optional
 Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
@@ -10,7 +10,7 @@ Vcs-Git: lp:glisze/teco
 Vcs-Browser: https://github.com/glisze/teco
 
 Package: teco
-Architecture: amd64, i386
+Architecture: amd64
 Depends: ${misc:Depends}
 Description: Text Editor and COrrector Program
   This is it...
