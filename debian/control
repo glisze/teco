@@ -10,7 +10,7 @@ Vcs-Git: lp:glisze/teco
 Vcs-Browser: https://github.com/glisze/teco
 
 Package: teco
-Architecture: amd64
+Architecture: all
 Depends: ${misc:Depends}
 Description: Text Editor and COrrector Program
   This is it...
@@ -19,3 +19,6 @@ Description: Text Editor and COrrector Program
   * 256,1ez
   works around the default, and on linux incorrect
   end-of-line sequence.
+  Also, please note that only the amd64 binary has been
+  verified to run. Other architecures are here to facilitate
+  their testing only.

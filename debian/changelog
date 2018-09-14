@@ -1,3 +1,9 @@
+teco (0.0.93-0ubuntu1) unstable; urgency=low
+
+ * Deployment work.
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Fri, 14 Sep 2018 14:56:00 +0000
+
 teco (0.0.73-0ubuntu1) unstable; urgency=low
 
  * the Text Editor and COrrector program
