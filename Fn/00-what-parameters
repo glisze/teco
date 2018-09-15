@@ -1,5 +1,0 @@
-00-what-parameters () 
-{ 
-    ( D="give the @parameter@ things" );
-    sed guix/git-fetch.scm.in -e s,^\.\*\\\(@\.\*[@]\\\)\.\*\$,\\1,gp -n
-}

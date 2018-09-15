@@ -1,5 +1,0 @@
-packages-here () 
-{ 
-    ( D="for: guix package -L ./ teco -K" );
-    tar cjf packages-here.tar.gz ./packages/
-}

@@ -1,5 +1,0 @@
-00-control () 
-{ 
-    ( D="control: this teco package" );
-    sed debian.in/control.in -e s,@PACKAGE[@],teco, -e s,@SECTION@,devel, -e s,@STANDARDS_VERSION[@],3.9.5, -e s,@BUILD_DEPENDS[@],debhelper' (>= 7)', -e s,@BIN_PACKAGE[@],teco,
-}

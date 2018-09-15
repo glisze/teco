@@ -1,5 +1,0 @@
-00-source-format () 
-{ 
-    ( D="source/format: the kind" );
-    sed debian.in/source/format.in -e s,@FORMAT_VERSION[@],'3.0 (quilt)',
-}

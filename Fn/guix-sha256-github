@@ -1,5 +1,0 @@
-guix-sha256-github () 
-{ 
-    ( D="Confuddle the RELEASE and the hash inside this package" );
-    sed guix-git-fetch.scm.in -e s,@release@,$( cat RELEASE ), -e s,@sha256@,$( guix hash -xr hithere-release-v0.0 ), > guix.scm
-}

@@ -1,5 +1,0 @@
-00-NEWS-version () 
-{ 
-    ( D="NEWS: minimalist compliance with standards, give our version" );
-    sed NEWS.in -e s,@VERSION[@],$( scripts/git-version-gen VERSION --prefix release\\/v ),g "$@"
-}

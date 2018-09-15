@@ -1,6 +1,0 @@
-00-make-linux () 
-{ 
-    ( D="make -f Makefile-linux" );
-    ./genclp;
-    make -f Makefile-linux "$@"
-}

@@ -1,6 +1,0 @@
-!
-! This options file adds the NOWRT attribute to the program section that
-! contains literal text strings.  This way,  if the program tries to write
-! into a literal string,  an access violation will occur.
-!
-PSECT_ATTR=$CHAR_STRING_CONSTANTS,NOWRT

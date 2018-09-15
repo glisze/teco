@@ -1,5 +1,0 @@
-00-git-clean () 
-{ 
-    ( D="git: clean anything not for this repository" );
-    rm $( git ls-files -o )
-}

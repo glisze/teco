@@ -1,9 +1,0 @@
-003_ () 
-{ 
-    local D="Show the descriptions of the shell functions that are on record here.";
-    for x in Fn/*;
-    do
-        local y=$( basename $x );
-        echo "$( declare -F $y ) -- $( sed ${x} -n -e '/^.* [D]="\(.*\)".*$/s,,\1,p' )";
-    done
-}

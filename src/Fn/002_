@@ -1,9 +1,0 @@
-002_ () 
-{ 
-    local D="Declare the shell functions as per our record here.";
-    rm -f Fn/*~ Fn/*.bak;
-    for x in Fn/*;
-    do
-        . $x;
-    done
-}

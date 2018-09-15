@@ -1,5 +1,0 @@
-00-packages-here () 
-{ 
-    ( D="git-fetch => packages/here/this.scm" );
-    sed guix/git-fetch.scm.in -e s,@PACKAGE_NAME@,tecoc, -e s,@VERSION@,$( scripts/git-version-gen VERSION --prefix release\\/v | sed - -e s,-dirty,, ), -e s,@COMMIT@,staging/v0$( scripts/git-version-gen VERSION --prefix release\\/v | sed - -e s,-dirty,, ), -e s,@URL@,https://github.com/glisze/teco/releases/download/staging%2Fv$( scripts/git-version-gen VERSION --prefix release\\/v | sed - -e s,-dirty,, ).tar.xz, -e s,@HOME@,https://glisze.github.com/teco/, "$@"
-}
