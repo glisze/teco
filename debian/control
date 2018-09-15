@@ -1,16 +1,16 @@
 Source: teco
-Version: 0.0.100
 Section: devel
 Priority: optional
 Maintainer: Gunter Liszewski <gunter.liszewski@gmail.com>
-Build-Depends: debhelper (>= 9), autotools-dev, libncurses-dev
+Build-Depends: debhelper (>= 9), autotools-dev, libncurses-dev,
+ dh-autoreconf, dh-buildinfo, pkg-config
 Standards-Version: 4.1.2
 Homepage: https://glisze.github.io/teco
 Vcs-Git: lp:glisze/teco
 Vcs-Browser: https://github.com/glisze/teco
 
 Package: teco
-Architecture: amd64
+Architecture: any
 Depends: ${misc:Depends}
 Description: Text Editor and COrrector Program
   This is it...

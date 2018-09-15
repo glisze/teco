@@ -1,3 +1,9 @@
+teco (0.0.101-0ubuntu1) unstable; urgency=low
+
+ * debian control review, same c/teco source, pending deploy setting
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 00:52:00:19 +0000
+
 teco (0.0.100-0ubuntu1) unstable; urgency=low
 
  * addressing deployment (deb) issues. Ncurses is required
