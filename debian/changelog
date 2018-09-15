@@ -1,3 +1,10 @@
+teco (0.0.106-0ubuntu1) unstable; urgency=low
+
+ * cl: to be had from github
+ * experimental all architectures
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sun, 16 Sep 2018 00:14:08 +0000
+
 teco (0.0.105-0ubuntu1) unstable; urgency=log
 
  * ci: dh run
@@ -13,7 +20,7 @@ teco (0.0.103-0ubuntu1) unstable; urgency=low
 teco (0.0.102-0ubuntu1) unstable; urgency=low
 
  * lp: series 0.0.1 (autodools, deb, guix, src), 0.0.2 (teco init)
- - i386 fails to compile, size_t ambiguities waffle
+ * i386 fails to compile, size_t ambiguities waffle
 
 -- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 02:51:25 +0000
 
