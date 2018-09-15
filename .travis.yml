@@ -50,6 +50,6 @@ deploy:
   file: "./out/*"
   on:
     repo: glisze/teco
-    branch: stage/0008/release/v0.0
+    branch: feature/0017/ci-lp-a105
 after_deploy:
 after_script:
