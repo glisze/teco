@@ -16,6 +16,7 @@ before_install:
 install: true
 before_script:
 - guile --version
+- t/0003.t
 - 193/0004.t
 - which tecoc && echo ok || echo not ok
 - whereis tecoc && echo ok || echo not ok

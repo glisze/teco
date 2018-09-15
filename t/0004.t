@@ -16,10 +16,11 @@ proc a {a b} {
     default  { puts "not ok $t"}
   }
 }
-p {1..5} {}
+p {1..6} {}
 spawn bash
 a "\r" {nothing}
 a "guile --version|head -1\r" {.*Guile.*\n}
 a "git --version|head -1\r" {.*git version.*\n}
 a "ld --version|head -1\r" {.*Binutils.*\n}
 a "gcc --version|head -1\r" {.*gcc.*\n}
+a "whereis tecoc\r" {.*tecoc.*\n}
