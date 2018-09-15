@@ -1,46 +1,22 @@
 language: c
 sudo: false
+install: true
 addons:
   apt:
-    sources:
-    - sourceline: 'ppa:dank/guile-2.2'
     packages:
-    - expect
     - libncurses5-dev
     - libncursesw5-dev
-    - guile-2.2
-    - debhelper
-    - dh-make
-    - fakeroot
-cache:
-before_install:
-install: true
-before_script:
-- export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
-- t/0003.t 2>>/dev/null 1>>/dev/null
-- . 225/0000.1 && . 225/0000.0 && 225/0001.0 && 225/0002.0 && 225/0002.0 install
-- ls -lR ./ && pwd
 script:
-- sh ./t/0000-who-is-this
-- prove t/000{3,4}.t
-after_script:
-before_cache:
-after_success:
-- echo "=== Success, this is teco ==="
-- cp -R debian/ ${SOURCE}
-- cd ${SOURCE} && fakeroot dh binary && cd ..
-- ls -lh
-- dpkg-deb -c teco*.deb
-after_failure:
-- echo "=== Enter the failure ==="
+- ./t/0001-who-is-this
+- ./bootstrap && ./configure --enable-silent-rules && make
+- make -s distcheck
+- make -s dist-xz
+- . Fn/002_;002_;packages-here
+- mkdir -p out && mv tecoc-*.tar.xz ./out && mv packages-here.tar.gz ./out
 before_deploy:
-- echo "=== Enter the deploy ==="
 - git config --local user.name "Gunter Liszewski (ci)"
 - git config --local user.email "gunter.liszewski@gmail.com"
 - git tag "staging/v$( scripts/git-version-gen VERSION --prefix release\\/v )"
-- . Fn/002_ && 002_ && packages-here && ls -lh
-- mkdir -p ./out/ && cp -v teco*.deb ./out/ && cp -v pacages-here* ./out/ && ls -lh ./out/
-- cp -v teco*.xz ./out/ && ls -lh ./out/
 deploy:
   provider: releases
   api_key:
@@ -51,5 +27,3 @@ deploy:
   on:
     repo: glisze/teco
     branch: stage/0008/release/v0.0
-after_deploy:
-after_script:

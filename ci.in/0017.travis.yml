@@ -1,0 +1,40 @@
+language: c
+sudo: false
+addons:
+  apt:
+    sources:
+    - sourceline: 'ppa:dank/guile-2.2'
+    packages:
+    - expect
+    - libncurses5-dev
+    - libncursesw5-dev
+    - guile-2.2
+    - debhelper
+    - dh-make
+    - fakeroot
+cache:
+before_install:
+install: true
+before_script:
+- export PREFIX=~/a; mkdir ~/a; export PATH=~/a/bin:$PATH
+- t/0003.t 2>>/dev/null 1>>/dev/null
+- . 225/0000.1 && . 225/0000.0 && 225/0001.0
+- ls -lR ./ && pwd
+script:
+- sh ./t/0000-who-is-this
+- prove t/000{3,4}.t
+after_script:
+before_cache:
+after_success:
+- echo "=== Success, this is teco ==="
+- cp -R debian/ ${SOURCE}
+- cd ${SOURCE} && fakeroot dh binary && cd ..
+- ls -lh
+- dpkg-deb -c tecoc*.deb
+after_failure:
+- echo "=== Enter the failure ==="
+before_deploy:
+- echo "=== Enter the deploy ==="
+deploy:
+after_deploy:
+after_script:

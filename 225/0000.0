@@ -1,4 +1,4 @@
-PACKAGE="tecoc"
+PACKAGE="teco"
 VERSION=$( sed README.md -e '/teco\/releases\/tag/!d' -e 's,^.*v\(.*\)$,\1,' )
 SOURCE="${PACKAGE}-${VERSION}"
 TAR_SUFFIX=".tar.xz"
