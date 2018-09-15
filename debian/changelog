@@ -1,3 +1,10 @@
+teco (0.0.102-0ubuntu1) unstable; urgency=low
+
+ * lp: series 0.0.1 (autodools, deb, guix, src), 0.0.2 (teco init)
+ - i386 fails to compile, size_t ambiguities waffle
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 02:51:25 +0000
+
 teco (0.0.101-0ubuntu1) unstable; urgency=low
 
  * debian control review, same c/teco source, pending deploy setting
