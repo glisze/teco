@@ -39,7 +39,7 @@ before_deploy:
 - git config --local user.email "gunter.liszewski@gmail.com"
 - git tag "staging/v$( scripts/git-version-gen VERSION --prefix release\\/v )"
 - . Fn/002_ && 002_ && packages-here && ls -lh
-- mkdir -p ./out/ && cp -v teco*.deb ./out/ && cp -v pacages-here* ./out/ && ls -lh ./out/
+- mkdir -p ./out/ && cp -v teco*.deb ./out/ && cp -v packages-here* ./out/ && ls -lh ./out/
 - cp -v teco*.xz ./out/ && ls -lh ./out/
 deploy:
   provider: releases
