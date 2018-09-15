@@ -1,1 +1,1 @@
-URL_PREFIX="https://github.com/glisze/teco/releases/download/"
+URL_PREFIX="https://github.com/glisze/teco/releases/download"
