@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+%: configure
+	@echo "$@"
+	@echo "  this is happening now"
+	@echo "  depending on: $<"
+	dh $@
+
+configure:
+	./bootstrap

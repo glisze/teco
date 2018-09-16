@@ -1,0 +1,49 @@
+teco (0.0.107-0ubuntu1) unstable; urgency=low
+
+ * deployment separation of source and package control
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sun, 16 Sep 2018 03:27:33 +0000
+
+teco (0.0.104-0ubuntu1) unstable; urgency=low
+
+ * packaging development based on release/v0.0 source  code
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 17:08:22 +0000
+
+teco (0.0.103-0ubuntu1) unstable; urgency=low
+
+ *  limit to amd64
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 04:51:15 +0000
+
+teco (0.0.102-0ubuntu1) unstable; urgency=low
+
+ *  series 0.0.1 (autodools, deb, guix, src), 0.0.2 (teco init)
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 02:51:25 +0000
+
+teco (0.0.101-0ubuntu1) unstable; urgency=low
+
+ * debian control review, same c/teco source, pending deploy setting
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 00:52:00:19 +0000
+
+teco (0.0.100-0ubuntu1) unstable; urgency=low
+
+ * addressing deployment (deb) issues. Ncurses is required
+   for now.
+ * versions, to be resolved. This, here, now is a test to
+   experience the effect of numbers, with this.
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Fri, 14 Sep 2018 21:07:45 +0000
+teco (0.0.93-0ubuntu1) unstable; urgency=low
+
+ * Deployment work.
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Fri, 14 Sep 2018 14:56:00 +0000
+
+teco (0.0.73-0ubuntu1) unstable; urgency=low
+
+ * the Text Editor and COrrector program
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 08 Sep 2018 11:10:53 +0100
