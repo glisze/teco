@@ -1,19 +1,18 @@
 teco (0.0.106-0ubuntu1) unstable; urgency=low
 
- * cl: to be had from github
- * experimental all architectures
+ * cl, to be had from github
 
 -- Gunter Liszewski <gunter.liszewski@gmail.com> Sun, 16 Sep 2018 00:14:08 +0000
 
-teco (0.0.105-0ubuntu1) unstable; urgency=log
+teco (0.0.105-0ubuntu1) unstable; urgency=low
 
- * ci: dh run
+ * ci, dh run
 
 -- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 21:17:07 +0000
 
 teco (0.0.103-0ubuntu1) unstable; urgency=low
 
- * lp: limit to amd64
+ * lp, limit to amd64
 
 -- Gunter Liszewski <gunter.liszewski@gmail.com> Sat, 15 Sep 2018 04:51:15 +0000
 

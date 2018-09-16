@@ -50,7 +50,7 @@ deploy:
   file: "./out/*"
   on:
     repo: glisze/teco
-    branch: feature/0017/ci-lp-a105
+    branch:  not/now
 after_deploy:
 - dpkg --root=$HOME/a --install ./out/teco_0.0.106-0ubuntu1-*all.deb || echo not ok
 - ls -lR $HOME/a
