@@ -1,5 +1,5 @@
 #!/usr/bin/env expect
-set a tecoc
+set a tecoc-not
 puts "1..1 todo 1\n"
 set t 1
 set b [catch "spawn $a"]
