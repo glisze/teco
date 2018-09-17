@@ -1,3 +1,9 @@
+teco (0.0.108-0ubuntu1) unstable; urgency=low
+
+ * shared to see if Cosmic can handle this
+
+-- Gunter Liszewski <gunter.liszewsi@gmail.com> Mon, 17 Sep 2018 18:34:44 +0000
+
 teco (0.0.107-0ubuntu1) unstable; urgency=low
 
  * deployment separation of source and package control
