@@ -11,7 +11,7 @@ Vcs-Git: lp:glisze/teco
 Vcs-Browser: https://github.com/glisze/teco
 
 Package: teco
-Architecture: i386
+Architecture: amd64
 Depends: ${misc:Depends}
 Description: Text Editor and COrrector Program
   This is it...
