@@ -24,6 +24,7 @@ before_script:
 script:
 - sh ./t/0000-who-is-this
 - prove -v
+- prove
 after_script:
 before_cache:
 after_success:
