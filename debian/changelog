@@ -1,5 +1,8 @@
+teco (0.0.110-0ubuntu1) unstable; urgency=low
 
+ * deployment to lp again with short named branc bcd
 
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Tue, 18 Sep 2018 20:45:07 +0000
 
 teco (0.0.109-0ubuntu1) unstable; urgency=low
 
