@@ -1,8 +1,17 @@
+
+
+
+teco (0.0.109-0ubuntu1) unstable; urgency=low
+
+ * tippex over a duplicate type thing
+
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Tue, 18 Sep 2018 14:13:01 +0000
+
 teco (0.0.108-0ubuntu1) unstable; urgency=low
 
  * shared to see if Cosmic can handle this
 
--- Gunter Liszewski <gunter.liszewsi@gmail.com> Mon, 17 Sep 2018 18:34:44 +0000
+-- Gunter Liszewski <gunter.liszewski@gmail.com> Mon, 17 Sep 2018 18:34:44 +0000
 
 teco (0.0.107-0ubuntu1) unstable; urgency=low
 

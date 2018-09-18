@@ -228,7 +228,7 @@ typedef int	ptrdiff_t;	/* not in /sys/types.h yet */
 #include <sys/types.h>		/* size_t (and maybe ptrdiff_t) */
 #else /* sun */
 // xxx typedef int	ptrdiff_t;
-typedef ULONG	size_t;
+// xxx typedef ULONG	size_t;
 #endif /* sun */
 
 #ifdef AMIGA
