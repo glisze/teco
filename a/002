@@ -8,10 +8,9 @@ namespace eval 002 {
 #
 package require struct::stack
 ::struct::stack a
-a push [pwd]
-proc pushd {b} {a push [pwd];catch {cd [glob -nocomplain [set b]]} {}}
-proc popd {} {catch {cd [a pop]} {}}
-proc dirs {} {catch {a get} {}}
+proc pushd {b} {a push [pwd];catch {cd [glob -nocomplain [set b]]}}
+proc popd {} {cd [a pop]}
+proc dirs {} {::namespace inscope :: {::002::a get}}
 proc m {} {exec git status -- .}
 proc n {{a {.}}} {exec git log --stat --color -- [set a]}
 proc v {{a {.}}} {exec git add --all -- [set a]}
@@ -19,3 +18,4 @@ proc c {args} {exec git commit -S -m "[join [set args]]"}
 namespace export m n v c pushd popd dirs
 }
 namespace import ::002::*
+interp alias {} teco {} tecoc teco -nocreate
