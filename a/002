@@ -1,0 +1,21 @@
+namespace eval 002 {
+# Sat, 21 Sep 2018 01:51:01 +0000 gl
+#
+# Commentary:
+#
+#  A set of things to do some practical things.
+# Artifacts, procs, concepts, matter
+#
+package require struct::stack
+::struct::stack a
+a push [pwd]
+proc pushd {b} {a push [pwd];catch {cd [glob -nocomplain [set b]]} {}}
+proc popd {} {catch {cd [a pop]} {}}
+proc dirs {} {catch {a get} {}}
+proc m {} {exec git status -- .}
+proc n {{a {.}}} {exec git log --stat --color -- [set a]}
+proc v {{a {.}}} {exec git add --all -- [set a]}
+proc c {args} {exec git commit -S -m "[join [set args]]"}
+namespace export m n v c pushd popd dirs
+}
+namespace import ::002::*
