@@ -1,3 +1,4 @@
+
 !CLPARS.TEC V2.2 5-June-1991 Pete Siemsen and Mark Henderson!
 
 !+***************************************************************************
@@ -216,6 +217,7 @@ Q1&4096"E                      !+ if there's no NOINI switch !
         EUU0[0-1EU               !+ no case flagging on typeout !
         ESU0[00ES                !+ no typeout after searches !
         ETU0[032768#32#8#1,0ET   !+ image mode, ^T noecho and nowait, ^C trap !
+        EZU0[0256,1EZ            !+ UNIX line ending is single character, ^J !
         [1
         G9
         X1
