@@ -62,6 +62,7 @@ EDU0[0ED&4ED             !+ turn on automatic memory expansion !
 EUU0[0-1EU               !+ no case flagging on typeout !
 ESU0[00ES                !+ no typeout after searches !
 ETU0[032768#32#8#1,0ET   !+ ^C trap, read nowait and noecho, image typeout !
+EZU0[0256,1EZ            !+ UNIX line ending is single character, ^J !
 Q1U0                     !+ Q0 = Q1 !
 0U1[1
 0,0X1
@@ -193,6 +194,7 @@ Q1&4096"E                      !+ if there's no NOINI switch !
         ZX9
         ZK
         ]1
+        ]0Q0EZ
         ]0Q0ET
         ]0Q0ES
         ]0Q0EU
@@ -758,6 +760,7 @@ q1&64"N                 !+ no NOPAGE switch? !
     0u8
 '
 ]1
+]0Q0EZ
 ]0Q0ET
 ]0Q0ES
 ]0Q0EU
