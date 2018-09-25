@@ -1,0 +1,7 @@
+!+ This is c.TEC !
+^atype: mung squ.tec d=c
+! this comment can be squished out !
+! the end !
+! This macro exits the teco program !
+ex
+
