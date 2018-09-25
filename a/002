@@ -11,11 +11,17 @@ package require struct::stack
 proc pushd {b} {a push [pwd];catch {cd [glob -nocomplain [set b]]}}
 proc popd {} {cd [a pop]}
 proc dirs {} {::namespace inscope :: {::002::a get}}
-proc m {} {exec git status -- .}
-proc n {{a {.}}} {exec git log --stat --color -- [set a]}
-proc v {{a {.}}} {exec git add --all -- [set a]}
-proc c {args} {exec git commit -S -m "[join [set args]]"}
+# proc m {} {exec git status -- .}
+# proc n {{a {.}}} {exec git log --stat --color -- [set a]}
+# proc v {{a {.}}} {exec git add --all -- [set a]}
+# proc c {args} {exec git commit -S -m "[join [set args]]"}
 namespace export m n v c pushd popd dirs
 }
 namespace import ::002::*
 interp alias {} teco {} tecoc teco -nocreate
+interp alias {} mung {} tecoc mung
+interp alias {} temake {} tecoc make
+interp alias {} m {} git status -- .
+interp alias {} n {} git log --stat -- .
+interp alias {} v {} git add --all -- .
+interp alias {} c {} git commit -S -m
