@@ -1,0 +1,10 @@
+PACKAGE="tecoc"
+VERSION=$( sed README.md -e '/teco\/releases\/tag/!d' -e 's,^.*v\(.*\)$,\1,' )
+SOURCE="${PACKAGE}-${VERSION}"
+TAR_SUFFIX=".tar.xz"
+TARBALL="${PACKAGE}-${VERSION}${TAR_SUFFIX}"
+TAG_PREFIX="staging%2Fv"
+URL_PREFIX="https://github.com/glisze/teco/releases/download/"
+DOWNLOAD="${URL_PREFIX}/${TAG_PREFIX}${VERSION}/${TARBALL}"
+# WGET_OPTIONS="--no-check-certificate"
+WGET_OPTIONS=""

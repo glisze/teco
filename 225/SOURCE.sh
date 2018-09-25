@@ -1,0 +1,1 @@
+SOURCE="${PACKAGE}-${VERSION}"
