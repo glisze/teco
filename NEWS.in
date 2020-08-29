@@ -22,3 +22,7 @@ archive, and their status needs to be asserted.
 So, here is the preparatory work to have an installed application. This is
 what this debian thing means. Having this will ease further work by having
 a known and accessible base for further work.
+
+
+Saturday, 2020.08.29,  setting up to explore the possibilities of the Hurd
+system.
