@@ -1,0 +1,5 @@
+c__ () 
+{ 
+    local D="git: amend this commit, without a new message";
+    EDITOR=echo git commit -s --amend
+}

@@ -1,0 +1,5 @@
+c_ () 
+{ 
+    local D="git: amend this commit, with this here";
+    git commit -s --amend -m "$sprint_topic: $*"
+}

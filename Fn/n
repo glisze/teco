@@ -1,0 +1,4 @@
+n () 
+{ 
+    git log --stat --pretty --date=relative -- $1 .
+}

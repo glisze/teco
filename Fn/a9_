@@ -1,0 +1,13 @@
+a9_ () 
+{ 
+    local D="Record the shell functions as they are declared now.";
+    rm -f Fn/*~ Fn/*.bak;
+    local a=$@;
+    test -z "$a" && a=$( echo Fn/* );
+    for b in $a;
+    do
+        local c=$( basename "$b" );
+        local d="Fn/$c";
+        test -n "declare -F $c" && declare -f $c > $d;
+    done
+}

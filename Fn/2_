@@ -1,0 +1,4 @@
+2_ () 
+{ 
+    socat TCP-LISTEN:5958 SYSTEM:'tee 0/l2r | socat - "TCP:127.0.0.1:5959"  | tee 0/r2l'
+}

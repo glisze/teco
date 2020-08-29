@@ -1,0 +1,12 @@
+a3_ () 
+{ 
+    local D="Show the descriptions of the shell functions that are on record here.";
+    local a=$@;
+    test -z "$a" && a=$( echo Fn/* );
+    for b in $a;
+    do
+        local c=$( basename "$b" );
+        local d="Fn/$c";
+        test -f "$d" && echo "$( declare -F "$c" ) -- $( sed ${d} -n -e '/^.* [D]="\(.*\)".*$/s,,\1,p' )";
+    done
+}
