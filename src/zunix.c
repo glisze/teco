@@ -203,8 +203,8 @@ system and imbedded in a TECO-style message with the SYS mnemonic.
 
 static VVOID ZErMsg()
 {
-	if (errno < sys_nerr)
-		ErrStr(ERR_SYS, sys_errlist[errno]);
+	// if (errno < sys_nerr)
+		ErrStr(ERR_SYS, strerror(errno));
 }
 
 /*****************************************************************************
@@ -2679,7 +2679,7 @@ fit into TECO-C.
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-#define strerror(n) sys_errlist[n]
+// #define strerror(n) sys_errlist[n]
 
 static int
 fastcopy(from, to, sbp, move_err)
